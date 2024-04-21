@@ -205,15 +205,20 @@ else:
 
 # Faça um programa que leia um número indeterminado de valores, correspondentes a notas, encerrando a entrada de dados quando for informado um valor igual a -1 (que não deve ser armazenado). Após esta entrada de dados, faça:
 armazena_numero = []
-gerador = random.randint(-1,1000)
+trava = -1
 
-for n in range(gerador,-1):
-    print(gerador)
-    while n != -1:
-        print(gerador)
-        armazena_numero.append(gerador)
+for n in range(0,100):
+    gerador = random.randint(trava,100) 
+    nota = gerador
+    if nota != trava:
+        armazena_numero.append(nota)
+    elif nota == 0:
+        pass
     else:
+        print(f'A trava foi acionada! \nTrava: {nota}') 
         break
+
+print(f'Notas geradas: {armazena_numero}')
 
 # Mostre a quantidade de valores que foram lidos;
 # Exiba todos os valores na ordem em que foram informados, um ao lado do outro;
