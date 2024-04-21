@@ -1,6 +1,6 @@
 import os
 os.system('cls')
-print('ESSA LISTA DE EXERCICIOS FOI FINALIZADA COM SUCESSO NO DIA 11/04 \n PARABÉNS PARA MIM PELA DEDICAÇÃO \n BORA PRA PROXIMA :)')
+print('ESSA LISTA DE EXERCICIOS FOI FINALIZADA COM SUCESSO NO DIA 11/04 \n PARABÉNS PELA DEDICAÇÃO \n BORA PRA PROXIMA :)')
 
 # Faça um programa que peça uma nota, entre zero e dez. Mostre uma mensagem caso o valor seja inválido e continue pedindo até que o usuário informe um valor válido. (FEITO)
 '''

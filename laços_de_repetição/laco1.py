@@ -1,6 +1,6 @@
 import os
 os.system('cls')
-print('ESSA LISTA DE EXERCICIOS FOI FINALIZADA COM SUCESSO NO DIA 11/04 \n PARABÉNS PARA MIM PELA DEDICAÇÃO \n BORA PRA PROXIMA :)')
+print('ESSA LISTA DE EXERCICIOS FOI FINALIZADA COM SUCESSO NO DIA 11/04 \n PARABÉNS PELA DEDICAÇÃO \n BORA PRA PROXIMA :)')
 
 # Contagem regressiva:
 # Escreva um programa que solicita um número inteiro positivo do usuário e, em seguida, imprime uma contagem regressiva a partir desse número até 0.(FEITO)
