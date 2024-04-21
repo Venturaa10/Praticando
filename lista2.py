@@ -242,30 +242,34 @@ print(f'Notas geradas na ordem que foram adicionados: {armazena_notas}')
 #     print(nota)
 
 
-print(f'Quantidade de Notas armazenadas: {len(armazena_notas)}')
-print(f'Soma das notas: {sum(armazena_notas)}')
 try:
     media_notas = sum(armazena_notas) / len(armazena_notas)
+    print(f'Média das notas : {round(media_notas,2)}')
+    print(f'Quantidade de Notas armazenadas: {len(armazena_notas)}')
+    print(f'Soma das notas: {sum(armazena_notas)}')
 except:
-    pass
+    print(f'Nenhuma nota foi gerada :(\nArmazenamento vazio: {armazena_notas} \nTente Novamente!')
+    print()
 
-print(f'Média das notas : {round(media_notas,2)}')
 
+try:
+    for nota in armazena_notas:
 
-for nota in armazena_notas:
-    try:
         if nota > media_notas:
             acima_media.append(nota)
         elif nota < 7: 
             abaixo_de_sete.append(nota)
         else: 
-            na_media.append(nota)
-    except:
-        print(f'Nenhuma nota foi gerada :(\nArmazenamento: {armazena_notas} \nTente Novamente!')
+            na_media.append(nota)        
 
-
-print(f'Notas Acima da Média: {acima_media}')
-print(f'Notas Abaixo de Sete: {abaixo_de_sete}')
-print(f'Notas na Média: {na_media}')
-print() #Pula linha
-print('Geração de notas realizada com sucesso!')
+    print(f'Notas Acima da Média: {acima_media}')
+    print(f'Notas Abaixo de Sete: {abaixo_de_sete}')
+    print(f'Notas na Média: {na_media}')
+    print() #Pula linha
+    if len(armazena_notas) != 0:
+        print('Geração de notas realizada com sucesso!')
+    else:  
+        print('A maquina pifou :(')
+        
+except:
+    pass
