@@ -221,6 +221,10 @@ na_media = []
 trava = -1
 
 for n in range(0,100):
+    """Loop responavél por:
+    - Gerar nota aleatoria
+    - Verificar a nota gerada se é igual a trava
+    """
     gerador = random.randint(trava,10) 
     nota = gerador
     if nota != trava:
@@ -236,19 +240,20 @@ for n in range(0,100):
 print() #Pula linha
 print(f'Notas geradas na ordem que foram adicionados: {armazena_notas}')
 
+""" Linha comentada abaixo está funcionando corretamente,é da ordem inversa, estava atrapalhando a minha visualização no terminal, então deixei comentada para melhorar a visualização"""
 # print(f'Notas geradas na ordem inversa que foram adicionadas:')
 # armazena_notas.reverse()
 # for nota in armazena_notas:
 #     print(nota)
 
-
+"""Tratamento de erro caso a primeira nota gerada tenha sido valor igual a trava"""
 try:
     media_notas = sum(armazena_notas) / len(armazena_notas)
     print(f'Média das notas : {round(media_notas,2)}')
     print(f'Quantidade de Notas armazenadas: {len(armazena_notas)}')
     print(f'Soma das notas: {sum(armazena_notas)}')
 except:
-    print(f'Nenhuma nota foi gerada :(\nArmazenamento vazio: {armazena_notas} \nTente Novamente!')
+    print(f'Nenhuma nota foi gerada\nArmazenamento vazio: {armazena_notas} \nTente Novamente!')
     print()
 
 
@@ -266,10 +271,12 @@ try:
     print(f'Notas Abaixo de Sete: {abaixo_de_sete}')
     print(f'Notas na Média: {na_media}')
     print() #Pula linha
+
+    """Condicional pela mudança da mensagem final, caso nenhuma nota tenha sido adicionada a lista"""
     if len(armazena_notas) != 0:
         print('Geração de notas realizada com sucesso!')
     else:  
         print('A maquina pifou :(')
-        
+
 except:
     pass
