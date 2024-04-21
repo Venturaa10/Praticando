@@ -2,7 +2,7 @@ import os
 import random
 os.system('cls')
 
-# Foram anotadas as idades e alturas de 30 alunos. Faça um Programa que determine quantos alunos com mais de 13 anos possuem altura inferior à média de altura desses alunos.
+# 1 - Foram anotadas as idades e alturas de 30 alunos. Faça um Programa que determine quantos alunos com mais de 13 anos possuem altura inferior à média de altura desses alunos.
 
 '''
 def listas():
@@ -126,7 +126,7 @@ imprime_infos()
 '''
 
 
-# Faça um programa que receba a temperatura média de cada mês do ano e armazene-as em uma lista. Após isto, calcule a média anual das temperaturas e mostre todas as temperaturas acima da média anual, e em que mês elas ocorreram (mostrar o mês por extenso: 1 – Janeiro, 2 – Fevereiro, . . . ). (FEITO) Só ficou faltando a parte de imprimir, mas a logica está correta
+# 2 - Faça um programa que receba a temperatura média de cada mês do ano e armazene-as em uma lista. Após isto, calcule a média anual das temperaturas e mostre todas as temperaturas acima da média anual, e em que mês elas ocorreram (mostrar o mês por extenso: 1 – Janeiro, 2 – Fevereiro, . . . ). (FEITO) Só ficou faltando a parte de imprimir, mas a logica está correta
 ''' 
 temperatura = []
 meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
@@ -163,7 +163,7 @@ print(f'Lista dos Abaixo da Média: {abaixo_media, temp_abaixo}')
 '''
 
 
-# Utilizando listas faça um programa que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
+# 3 - Utilizando listas faça um programa que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
 # "Telefonou para a vítima?"
 # "Esteve no local do crime?"
 # "Mora perto da vítima?"
@@ -203,7 +203,7 @@ else:
     print(f'O(a) {nome} é classificado(a) como: Inocente')
 '''
 
-# Faça um programa que leia um número indeterminado de valores, correspondentes a notas, encerrando a entrada de dados quando for informado um valor igual a -1 (que não deve ser armazenado). Após esta entrada de dados, faça:
+# 4 - Faça um programa que leia um número indeterminado de valores, correspondentes a notas, encerrando a entrada de dados quando for informado um valor igual a -1 (que não deve ser armazenado). Após esta entrada de dados, faça:
 
 # Mostre a quantidade de valores que foram lidos; (FEITO)
 # Exiba todos os valores na ordem em que foram informados, um ao lado do outro; (FEITO)
