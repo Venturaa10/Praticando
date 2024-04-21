@@ -204,27 +204,68 @@ else:
 '''
 
 # Faça um programa que leia um número indeterminado de valores, correspondentes a notas, encerrando a entrada de dados quando for informado um valor igual a -1 (que não deve ser armazenado). Após esta entrada de dados, faça:
-armazena_numero = []
+
+# Mostre a quantidade de valores que foram lidos; (FEITO)
+# Exiba todos os valores na ordem em que foram informados, um ao lado do outro; (FEITO)
+# Exiba todos os valores na ordem inversa à que foram informados, um abaixo do outro; (FEITO)
+# Calcule e mostre a soma dos valores; (FEITO)
+# Calcule e mostre a média dos valores; (FEITO)
+# Calcule e mostre a quantidade de valores acima da média calculada; 
+# Calcule e mostre a quantidade de valores abaixo de sete;
+# Encerre o programa com uma mensagem;
+
+armazena_notas = []
+acima_media = []
+abaixo_de_sete = []
+na_media = []
 trava = -1
 
 for n in range(0,100):
-    gerador = random.randint(trava,100) 
+    gerador = random.randint(trava,10) 
     nota = gerador
     if nota != trava:
-        armazena_numero.append(nota)
-    elif nota == 0:
-        pass
+        if nota != 0:
+            armazena_notas.append(nota)
+        else:
+            pass
+
     else:
         print(f'A trava foi acionada! \nTrava: {nota}') 
         break
 
-print(f'Notas geradas: {armazena_numero}')
+print() #Pula linha
+print(f'Notas geradas na ordem que foram adicionados: {armazena_notas}')
 
-# Mostre a quantidade de valores que foram lidos;
-# Exiba todos os valores na ordem em que foram informados, um ao lado do outro;
-# Exiba todos os valores na ordem inversa à que foram informados, um abaixo do outro;
-# Calcule e mostre a soma dos valores;
-# Calcule e mostre a média dos valores;
-# Calcule e mostre a quantidade de valores acima da média calculada;
-# Calcule e mostre a quantidade de valores abaixo de sete;
-# Encerre o programa com uma mensagem;
+# print(f'Notas geradas na ordem inversa que foram adicionadas:')
+# armazena_notas.reverse()
+# for nota in armazena_notas:
+#     print(nota)
+
+
+print(f'Quantidade de Notas armazenadas: {len(armazena_notas)}')
+print(f'Soma das notas: {sum(armazena_notas)}')
+try:
+    media_notas = sum(armazena_notas) / len(armazena_notas)
+except:
+    pass
+
+print(f'Média das notas : {round(media_notas,2)}')
+
+
+for nota in armazena_notas:
+    try:
+        if nota > media_notas:
+            acima_media.append(nota)
+        elif nota < 7: 
+            abaixo_de_sete.append(nota)
+        else: 
+            na_media.append(nota)
+    except:
+        print(f'Nenhuma nota foi gerada :(\nArmazenamento: {armazena_notas} \nTente Novamente!')
+
+
+print(f'Notas Acima da Média: {acima_media}')
+print(f'Notas Abaixo de Sete: {abaixo_de_sete}')
+print(f'Notas na Média: {na_media}')
+print() #Pula linha
+print('Geração de notas realizada com sucesso!')
