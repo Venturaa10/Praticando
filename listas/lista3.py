@@ -1,4 +1,5 @@
 import os
+import random
 os.system('cls')
 
 # 1 - Em uma competição de salto em distância cada atleta tem direito a cinco saltos. O resultado do atleta será determinado pela média dos cinco valores restantes. Você deve fazer um programa que receba o nome e as cinco distâncias alcançadas pelo atleta em seus saltos e depois informe o nome, os saltos e a média dos saltos. O programa deve ser encerrado quando não for informado o nome do atleta. A saída do programa deve ser conforme o exemplo abaixo:
@@ -17,10 +18,12 @@ os.system('cls')
 
 armazena_nome = []
 armazena_saltos = []
+encerra = 0
+
 print('''
 -----------------> COMPETIÇÃO SALTO A DISTÂNCIA <-----------------
 ''')
-print('Caso queira encerrar a listagem dos atletas basta aperta "ENTER" na hora de preencher alguma informação!\n')
+print('Caso queira encerrar a listagem dos atletas basta aperta "ENTER" na hora de preencher o nome do atleta!\n')
 for n in range(100):
     atleta = input('Nome do atleta: ').capitalize().strip()
     if len(atleta) == 0:
@@ -31,10 +34,18 @@ for n in range(100):
     armazena_nome.append(atleta)
 
     for s in range(0,5):
+        s = s + 1
+        salto = random.uniform(0.0,8.0)
+        salto = round(salto,2)
+        print(f'{s}º Saldo do {atleta}: {salto}')
+        # salto = float(input(f'{s}º Saldo do {atleta}: '))
 
-        salto = float(input(f'{s+1}º Saldo do {atleta}: '))
-
-        armazena_saltos.append(salto)
+        while salto <= 0 or salto > 7.5:
+            print(f'O valor {salto} m é inválido! ')
+            print(f'Preencha o {s}º salto novamente!\n')
+            salto = float(input(f'{s}º Saldo do {atleta}: '))
+        else:
+            armazena_saltos.append(salto)
 
     print()
 
