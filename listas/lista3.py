@@ -33,8 +33,7 @@ print(armazena_saltos)
 for a in armazena_nome:
     print()
     print(f'Atleta: {a}\n')
-    for indice, num in enumerate(armazena_saltos):
-        pass
-        for sa in armazena_saltos:
-            print(f'{indice+1}º salto : {sa} m')
+    for indice, s in enumerate(armazena_saltos):
+        print(f'{indice+1}º Salto: {s}m')
+    print()
     break
