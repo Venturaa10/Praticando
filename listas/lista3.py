@@ -18,22 +18,24 @@ os.system('cls')
 armazena_nome = []
 armazena_saltos = []
 
-for n in range(0,5):
+for n in range(0,2):
     atleta = input('Nome do atleta: ').capitalize()
     print()
     armazena_nome.append(atleta)
     for s in range(0,5):
         salto = float(input(f'{s+1}º Saldo do {atleta}: ')) 
         armazena_saltos.append(salto)
-    
-    break
+
+    print()
+
 print(armazena_nome)
 print(armazena_saltos)
-        
+print()
+print(f'Informações dos Atletas!')
 for a in armazena_nome:
-    print()
-    print(f'Atleta: {a}\n')
+    print(f'Nome do Atleta: {a}')
+    print(f'Saltos do {a} em Metros')
     for indice, s in enumerate(armazena_saltos):
-        print(f'{indice+1}º Salto: {s}m')
+        print(f'{indice+1}º Salto: {s} m')    
     print()
-    break
+    
