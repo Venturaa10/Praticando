@@ -17,13 +17,23 @@ os.system('cls')
 
 armazena_nome = []
 armazena_saltos = []
+print('''
+-----------------> COMPETIÇÃO SALTO A DISTÂNCIA <-----------------
+''')
+print('Caso queira encerrar a listagem dos atletas basta aperta "ENTER" na hora de preencher alguma informação!\n')
+for n in range(100):
+    atleta = input('Nome do atleta: ').capitalize().strip()
+    if len(atleta) == 0:
+        print('PROGRAMA ENCERRADO!')
+        break
 
-for n in range(0,2):
-    atleta = input('Nome do atleta: ').capitalize()
     print()
     armazena_nome.append(atleta)
+
     for s in range(0,5):
-        salto = float(input(f'{s+1}º Saldo do {atleta}: ')) 
+
+        salto = float(input(f'{s+1}º Saldo do {atleta}: '))
+
         armazena_saltos.append(salto)
 
     print()
