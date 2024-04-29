@@ -106,7 +106,7 @@ print(f'Quantidade de vogais na frase: {len(contador)}')
 
 
 # Inversão de string:
-# Escreva um programa que recebe uma string do usuário e imprime a string invertida.(FEITO COM CHATGPT :( ESTAVA COM MUITA DIFICULDADE )
+# Escreva um programa que recebe uma string do usuário e imprime a string invertida.
 '''
 """Para solucionar esse exercicio, busquei o ChatGPT. 
 Explicando a resolução Conceito

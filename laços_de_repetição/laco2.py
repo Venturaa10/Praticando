@@ -169,7 +169,7 @@ print(f'Levará cerca de {ano} anos para que a população A ultrapasse B em hab
 '''
 # Faça um programa que imprima na tela os números de 1 a 20, um abaixo do outro. Depois modifique o programa para que ele mostre os números um ao lado do outro.(FEITO)
 
-'''
+
 for i in range(0, 21):
     print(i)
 """
@@ -177,7 +177,6 @@ Peguei a solução de tirar a quebra de linha no github
 Transformando o range em lista os valores retornaram um ao lado do outro
 """
 print(list(range(0,21)))
-'''
 
 # Faça um programa que leia 5 números e informe o maior número.(FEITO)
 '''
