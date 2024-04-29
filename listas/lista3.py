@@ -86,4 +86,19 @@ for n in range(100):
     print()
 
 
+# for a in armazena_nome:
+#     print(f'Nome do Atleta: {a}')
+#     print(f'Saltos do {a} em Metros')
+    
+#     for s in armazena_saltos:
+
+#         if len(excluir_notas) > 5:
+#             excluir_notas.clear()
+#         else:
+#             for indice, v in enumerate(excluir_notas):
+#                 pass
+#             print(f'{indice+1}º Salto: {v} m') 
+#         continue
+
+#     print()
     
