@@ -24,39 +24,80 @@ print('''
 -----------------> COMPETIÇÃO SALTO A DISTÂNCIA <-----------------
 ''')
 print('Caso queira encerrar a listagem dos atletas basta aperta "ENTER" na hora de preencher o nome do atleta!\n')
-for n in range(100):
-    atleta = input('Nome do atleta: ').capitalize().strip()
-    if len(atleta) == 0:
-        print('PROGRAMA ENCERRADO!')
-        break
 
-    print()
+
+for n in range(100):
+    """Recebe o nome do atleta"""
+    atleta = input('Nome do atleta: ').capitalize().strip()
+    """Se o usuario digitar nenhum valor, a lista será encerrada"""
+    if len(atleta) == 0:
+        print('LISTAGEM ENCERRADO!')
+        break
+    
+    """Se não, o valor do 'atleta' será armazenado na lista"""
     armazena_nome.append(atleta)
 
+    """
+        Laço de repetição responsavel por pedir os 5 saltos do usuario
+        Saltos gerados e validados de forma automatica para ajudar a realizar os testes do código com mais rapido
+    """
     for s in range(0,5):
         s = s + 1
         salto = random.uniform(0.0,8.0)
         salto = round(salto,2)
-        print(f'{s}º Saldo do {atleta}: {salto}')
+        # print(f'{s}º Saldo do {atleta}: {salto}')
         # salto = float(input(f'{s}º Saldo do {atleta}: '))
-
+        
+        """
+        Enquanto for gerado um valor que retorne esse loop while True, será gerado um novo valor do 'salto' até retornar o loop while, False
+        Se não, o valor gerado será armazenado a lista dos saltos
+        """
         while salto <= 0 or salto > 7.5:
             print(f'O valor {salto} m é inválido! ')
             print(f'Preencha o {s}º salto novamente!\n')
-            salto = float(input(f'{s}º Saldo do {atleta}: '))
+            
+            salto = random.uniform(0.0,8.0)
+            salto = round(salto,2)
+            # print(f'{s}º Saldo do {atleta}: {salto}')
+            # salto = float(input(f'{s}º Saldo do {atleta}: '))
         else:
             armazena_saltos.append(salto)
 
+
+    media = sum(armazena_saltos) / len(armazena_saltos)
+
+    """Laços responsaveis por imprimir as informações do atleta, nome, saltos e media dos saltos."""
+    for atleta in armazena_nome:
+        print(f'\nInformações do(a) Atleta {atleta}!\n')
+        for indice, salto in enumerate(armazena_saltos):
+            print(f'{indice+1}º Salto: {salto} m')
+    
     print()
 
-print(armazena_nome)
-print(armazena_saltos)
-print()
-print(f'Informações dos Atletas!')
-for a in armazena_nome:
-    print(f'Nome do Atleta: {a}')
-    print(f'Saltos do {a} em Metros')
-    for indice, s in enumerate(armazena_saltos):
-        print(f'{indice+1}º Salto: {s} m')    
+    """Exibindo as informações"""
+    print(f'Atleta: {atleta}')
+    print(f'Saltos: {armazena_saltos}')
+    print(f'Média dos Saltos: {round(media,2)}') 
+    
+    """Limpando as listas para receber as informações de um novo atleta"""
+    armazena_nome.clear()
+    armazena_saltos.clear()
+        
     print()
+
+# for a in armazena_nome:
+#     print(f'Nome do Atleta: {a}')
+#     print(f'Saltos do {a} em Metros')
+    
+#     for s in armazena_saltos:
+
+#         if len(excluir_notas) > 5:
+#             excluir_notas.clear()
+#         else:
+#             for indice, v in enumerate(excluir_notas):
+#                 pass
+#             print(f'{indice+1}º Salto: {v} m') 
+#         continue
+
+#     print()
     
