@@ -147,3 +147,4 @@ while True:
 
     
 print(armazena_votos)
+print
