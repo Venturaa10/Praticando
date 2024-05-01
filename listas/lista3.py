@@ -125,7 +125,8 @@ for n in range(100):
 
 """Está lista armazena todos os votos de acordo com o número da camisa do jogador"""
 armazena_votos = []
-    
+
+'''    
 while True:
     """
     - Tratamento de erro caso o usuario digite um valor diferente de um número inteiro, retornando a variavel para digitar outro número
@@ -171,17 +172,62 @@ for voto in armazena_votos:
             - Conta a quantidade de votos que o jogador recebeu, utilizando o metodo count, que retornara o número de ocorrencias que o número do jogador tem na lista de 'armazena_votos'
             - Calcula a porcentagem dos votos recebidos 
             """
+
+
             for i in range(1):
                 verifica_repeticao.append(voto) 
                 contador_de_ocorrencia = armazena_votos.count(voto)
                 calcula_porcem = contador_de_ocorrencia / len(armazena_votos) * 100
-                print(f'Jogador Número {voto}  | Votos Recebidos: {contador_de_ocorrencia}  | Porcentagem: {calcula_porcem:.2f}%')
+            
+            # numero_vencedor.append(voto)
+            # votos_vencedor.append(contador_de_ocorrencia)
+            # if contador_de_ocorrencia < votos_vencedor.pop():
+            #     pass
+            # else:
+            #     numero_vencedor.clear()
+            #     votos_vencedor.clear()
+
+            #     numero_vencedor.append(voto)
+            #     votos_vencedor.append(contador_de_ocorrencia)
+                
+
+                if voto < 10:
+                    print(f'Jogador Número {voto}  | Votos Recebidos: {contador_de_ocorrencia}  | Porcentagem: {calcula_porcem:.2f}%')
+                else:
+                    print(f'Jogador Número {voto} | Votos Recebidos: {contador_de_ocorrencia}  | Porcentagem: {calcula_porcem:.2f}%')
+
 
         else:
             pass
 
 
 print()   
-print(armazena_votos)
+# print(armazena_votos)
 print(f'Foram computados {len(armazena_votos)} votos!')
 print(f'Vencedor é o jogador número {numero_vencedor} com {votos_vencedor} votos!')
+'''
+
+# 3 - Uma empresa de pesquisas precisa tabular os resultados da seguinte enquete feita a um grande quantidade de organizações:
+# "Qual o melhor Sistema Operacional para uso em servidores?"
+
+# As possíveis respostas são:
+
+# 1- Windows Server
+# 2- Unix
+# 3- Linux
+# 4- Netware
+# 5- Mac OS
+# 6- Outro
+# Você foi contratado para desenvolver um programa que leia o resultado da enquete e informe ao final o resultado da mesma. O programa deverá ler os valores até ser informado o valor 0, que encerra a entrada dos dados. Não deverão ser aceitos valores além dos válidos para o programa (0 a 6). Os valores referentes a cada uma das opções devem ser armazenados num vetor. Após os dados terem sido completamente informados, o programa deverá calcular a percentual de cada um dos concorrentes e informar o vencedor da enquete. O formato da saída foi dado pela empresa, e é o seguinte:
+# Sistema Operacional     Votos   %
+# -------------------     -----   ---
+# Windows Server           1500   17%
+# Unix                     3500   40%
+# Linux                    3000   34%
+# Netware                   500    5%
+# Mac OS                    150    2%
+# Outro                     150    2%
+# -------------------     -----
+# Total                    8800
+
+# O Sistema Operacional mais votado foi o Unix, com 3500 votos, correspondendo a 40% dos votos.
