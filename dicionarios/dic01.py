@@ -7,14 +7,18 @@ frutas = {}
 """Sintaxe para adicionar chave e valor ao dicionario:
 dicionario['Chave'] = valor
 """
+
 frutas['Banana'] = 20
 frutas['Pera'] = 30
 frutas['Maça'] = 10
 print(f'Frutas: {frutas}')
 # 2 - A partir do dicionário anterior, adicione uma nova fruta com sua quantidade.(FEITO)
+
 frutas['Morango'] = 50
 print(f'Frutas: {frutas}')
+
 # 3 - Escreva um código para verificar se uma determinada fruta está presente no dicionário.(FEITO)
+'''
 nome_fruta = input('Nome da Fruta: ').capitalize().strip()
 
 if nome_fruta in frutas:
@@ -23,23 +27,29 @@ else:
     print(f'A fruta {nome_fruta} não está presente no dicionário')
 
 print()
+'''
+
 # 4 - Escreva um programa para imprimir todas as chaves do dicionário.(FEITO)
+'''
 """As duas maneiras que consegui"""
 print(frutas.keys())
 for chave in frutas.keys():
     print(f'Chaves do dicionário Fruta: {chave}')
 
 print()
-
+'''
 # 5 - Escreva um código para imprimir todos os valores do dicionário.(FEITO)
+'''
 """As duas maneiras que consegui"""
 print(frutas.values())
 for valor in frutas.values():
     print(valor)
 print()
+'''
 # 6 - Escreva um programa para calcular o total de todas as quantidades de frutas no dicionário.(FEITO)
+'''
 print(f'Quantidades de unidades de frutas: {sum(frutas.values())}')
-
+'''
 # 7 - Escreva um código para encontrar a fruta com a maior quantidade no dicionário. 
 # Remova uma fruta do dicionário e imprima o dicionário atualizado.  (FEITO)
 # Limpe o dicionário, removendo todos os itens.(Feito)
@@ -48,15 +58,18 @@ print(f'Quantidades de unidades de frutas: {sum(frutas.values())}')
 for fruta in frutas:
     print(fruta)
 
-print(frutas.items())
-
-print(f'A fruta em maior quantidade no estoque contém: {max(frutas.values())} unidades.')
+"""Revisar a explicação da 'key=lambda' """
+maior_qtd = max(frutas.items(), key=lambda item:item[1])
+print(f'A fruta em maior quantidade no estoque contém: {maior_qtd} unidades.')
+"""
 print(f'Removendo fruta: {frutas.popitem()}\n') #Remove o ultimo item adicionado ao dicionario
-
+"""
+"""
 print(f'Removendo chave especifica: {frutas.pop('Pera')}') #Remove a chave especifica, e retorna o valor dessa chave
 print(f'Dicionario atualizado: {frutas}')
 print()
-
+"""
+"""
 frutas2 = {}
 frutas2['Abacaxi'] = 27
 frutas2['Laranja'] = 17
@@ -72,5 +85,5 @@ if len(frutas) == 0:
     print('Não há frutas!')
 else:
     print(frutas)
-
+"""
 
