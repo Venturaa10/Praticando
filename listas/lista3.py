@@ -38,10 +38,12 @@ for n in range(100):
     """
     for s in range(0,5):
         s = s + 1
-        salto = random.uniform(0.0,8.0)
-        salto = round(salto,2)
-        # print(f'{s}º Saldo do {atleta}: {salto}')
-        # salto = float(input(f'{s}º Saldo do {atleta}: '))
+        """Variaveis utilizadas para realizar testes no código, pois gera os valores de forma automatica tornando a manutenção do código mais rapida"""
+        # salto = random.uniform(0.0,8.0)
+        # salto = round(salto,2)
+
+        salto = float(input(f'{s}º Saldo do {atleta}: '))
+        # print(f'{s}º Saldo do {atleta}: {salto:.2f}')
         
         """
         Enquanto for gerado um valor que retorne esse loop while True, será gerado um novo valor do 'salto' até retornar o loop while, False
@@ -51,10 +53,13 @@ for n in range(100):
             print(f'O valor {salto} m é inválido! ')
             print(f'Preencha o {s}º salto novamente!\n')
             
-            salto = random.uniform(0.0,8.0)
-            salto = round(salto,2)
-            # print(f'{s}º Saldo do {atleta}: {salto}')
-            # salto = float(input(f'{s}º Saldo do {atleta}: '))
+            """Variaveis utilizadas para realizar testes no código, pois gera os valores de forma automatica tornando a manutenção do código mais rapida"""
+            # salto = random.uniform(0.0,8.0)
+            # salto = round(salto,2)
+
+            salto = float(input(f'{s}º Saldo do {atleta}: '))
+            # print(f'{s}º Saldo do {atleta}: {salto:.2f}')
+            
         else:
             armazena_saltos.append(salto)
 
@@ -82,6 +87,6 @@ for n in range(100):
     
     """Limpando a lista para receber as informações de um novo atleta"""
     armazena_saltos.clear()
-        
-    print()
 
+    print()
+    print('PROXIMO ATLETA!')
