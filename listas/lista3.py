@@ -123,9 +123,14 @@ for n in range(100):
 # 11              1               12,5%
 # O melhor jogador foi o número 9, com 4 votos, correspondendo a 50% do total de votos.
 
+"""Está lista armazena todos os votos de acordo com o número da camisa do jogador"""
 armazena_votos = []
     
 while True:
+    """
+    - Tratamento de erro caso o usuario digite um valor diferente de um número inteiro, retornando a variavel para digitar outro número
+    - O programa só continuara quando receber um valor valido
+    """
     try:
         # numero_jogador = int(input('Número do Jogador: '))
         for i in range(0,50):
@@ -135,6 +140,7 @@ while True:
         print('Valor Invalido!')
         continue; numero_jogador
 
+    """Em caso de 0, o programa será encerrado, se for menor que 0 ou maior que 23, retornará uma mensagem de aviso e a para digitar novamente até o usuario digitar um valor valido, se não o voto será computado e armazenado na lista"""
     if numero_jogador == 0:
         print()
         print('PROGRAMA ENCERRADO!')
@@ -150,16 +156,26 @@ while True:
 
 verifica_repeticao = []
 armazena_votos.sort()
-
+numero_vencedor = []
+votos_vencedor = []
 
 for voto in armazena_votos:
+        """
+        - Essa condição é para evitar que seja contabilizado e exibido a votação de um número já contabilizado pelo programa, ou seja, se esse valor (Número do jogador e a quantidade de votos recebidos) não estiver na lista de verificação, ele será contabilizado e armazenado na lista.
+
+        - Caso retorne False, o programa continuara sem duplicar os votos do jogador
+        """
         if voto not in verifica_repeticao:
+            """ 
+            - O Loop adiciona o voto desse jogaodr na lista de verificação
+            - Conta a quantidade de votos que o jogador recebeu, utilizando o metodo count, que retornara o número de ocorrencias que o número do jogador tem na lista de 'armazena_votos'
+            - Calcula a porcentagem dos votos recebidos 
+            """
             for i in range(1):
                 verifica_repeticao.append(voto) 
                 contador_de_ocorrencia = armazena_votos.count(voto)
                 calcula_porcem = contador_de_ocorrencia / len(armazena_votos) * 100
                 print(f'Jogador Número {voto}  | Votos Recebidos: {contador_de_ocorrencia}  | Porcentagem: {calcula_porcem:.2f}%')
-            
 
         else:
             pass
@@ -168,4 +184,4 @@ for voto in armazena_votos:
 print()   
 print(armazena_votos)
 print(f'Foram computados {len(armazena_votos)} votos!')
-
+print(f'Vencedor é o jogador número {numero_vencedor} com {votos_vencedor} votos!')
