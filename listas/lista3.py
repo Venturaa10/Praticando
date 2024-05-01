@@ -256,9 +256,8 @@ while True:
     - O programa só continuara quando receber um valor valido
     """
     try:
-        # numero_jogador = int(input('Número do Jogador: '))
+        # numero_sistema = int(input('Qual o melhor Sistema Operacional para uso em servidores? '))    
         for i in range(0,50):
-            # numero_sistema = int(input('Qual o melhor Sistema Operacional para uso em servidores? '))
             numero_sistema = random.randint(0,7)      
     except:
         os.system('cls')
@@ -266,7 +265,7 @@ while True:
         print('Valor Invalido!')
         continue; numero_sistema
 
-    """Em caso de 0, o programa será encerrado, se for menor que 0 ou maior que 23, retornará uma mensagem de aviso e a para digitar novamente até o usuario digitar um valor valido, se não o voto será computado e armazenado na lista"""
+    """Em caso de 0, o programa será encerrado, se for menor que 1 ou maior que 6, retornará uma mensagem de aviso e a para digitar novamente até o usuario digitar um valor valido, se não o voto será computado e armazenado na lista"""
     if numero_sistema == 0:
         print()
         print('PROGRAMA ENCERRADO!')
@@ -291,14 +290,14 @@ armazena_escolha.sort()
 
 for voto in armazena_escolha:
         """
-        - Essa condição é para evitar que seja contabilizado e exibido a votação de um número já contabilizado pelo programa, ou seja, se esse valor (Número do jogador e a quantidade de votos recebidos) não estiver na lista de verificação, ele será contabilizado e armazenado na lista.
+        - Essa condição é para evitar que seja contabilizado e exibido a votação de um número já contabilizado pelo programa, ou seja, se esse valor (Número do sistema operacional e a quantidade de votos recebidos) não estiver na lista de verificação, ele será contabilizado e armazenado na lista.
 
-        - Caso retorne False, o programa continuara sem duplicar os votos do jogador
+        - Caso retorne False, o programa continuara sem duplicar os votos do sistema
         """
         if voto not in verifica_repeticao:
             """ 
             - O Loop adiciona o voto desse jogaodr na lista de verificação
-            - Conta a quantidade de votos que o jogador recebeu, utilizando o metodo count, que retornara o número de ocorrencias que o número do jogador tem na lista de 'armazena_votos'
+            - Conta a quantidade de votos que o sistema recebeu, utilizando o metodo count, que retornara o número de ocorrencias que o número do sistema operacional tem na lista de 'armazena_escolha'
             - Calcula a porcentagem dos votos recebidos 
             """
             for i in range(1):
