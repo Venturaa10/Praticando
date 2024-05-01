@@ -76,8 +76,12 @@ for n in range(100):
 
     """Exibindo as informações"""
     print(f'Atleta: {atleta}')
-    print(f'Saltos: {armazena_saltos}')
-    print(f'Média dos Saltos: {round(media,2)}') 
+    print('Saltos: ',end='')
+    for v in armazena_saltos:
+        print(v, end=' - ')
+        
+
+    print(f'\nMédia dos Saltos: {round(media,2)}') 
     
     """Limpando as listas para receber as informações de um novo atleta"""
     armazena_nome.clear()
