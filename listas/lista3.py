@@ -16,7 +16,6 @@ os.system('cls')
 # Saltos: 6.5 - 6.1 - 6.2 - 5.4 - 5.3
 # Média dos saltos: 5.9 m
 
-armazena_nome = []
 armazena_saltos = []
 encerra = 0
 
@@ -33,10 +32,6 @@ for n in range(100):
     if len(atleta) == 0:
         print('LISTAGEM ENCERRADO!')
         break
-    
-    """Se não, o valor do 'atleta' será armazenado na lista"""
-    armazena_nome.append(atleta)
-
     """
         Laço de repetição responsavel por pedir os 5 saltos do usuario
         Saltos gerados e validados de forma automatica para ajudar a realizar os testes do código com mais rapido
@@ -67,10 +62,10 @@ for n in range(100):
     media = sum(armazena_saltos) / len(armazena_saltos)
 
     """Laços responsaveis por imprimir as informações do atleta, nome, saltos e media dos saltos."""
-    for atleta in armazena_nome:
-        print(f'\nInformações do(a) Atleta {atleta}!\n')
-        for indice, salto in enumerate(armazena_saltos):
-            print(f'{indice+1}º Salto: {salto} m')
+
+    print(f'\nInformações do(a) Atleta {atleta}!\n')
+    for indice, salto in enumerate(armazena_saltos):
+        print(f'{indice+1}º Salto: {salto} m')
     
     print()
 
@@ -85,8 +80,7 @@ for n in range(100):
 
     print(f'\nMédia dos Saltos: {round(media,2)}') 
     
-    """Limpando as listas para receber as informações de um novo atleta"""
-    armazena_nome.clear()
+    """Limpando a lista para receber as informações de um novo atleta"""
     armazena_saltos.clear()
         
     print()
