@@ -2,7 +2,7 @@ import os
 import random
 os.system('cls')
 
-# 1 - Em uma competição de salto em distância cada atleta tem direito a cinco saltos. O resultado do atleta será determinado pela média dos cinco valores restantes. Você deve fazer um programa que receba o nome e as cinco distâncias alcançadas pelo atleta em seus saltos e depois informe o nome, os saltos e a média dos saltos. O programa deve ser encerrado quando não for informado o nome do atleta. A saída do programa deve ser conforme o exemplo abaixo:
+# 1 - Em uma competição de salto em distância cada atleta tem direito a cinco saltos. O resultado do atleta será determinado pela média dos cinco valores restantes. Você deve fazer um programa que receba o nome e as cinco distâncias alcançadas pelo atleta em seus saltos e depois informe o nome, os saltos e a média dos saltos. O programa deve ser encerrado quando não for informado o nome do atleta. A saída do programa deve ser conforme o exemplo abaixo: (FEITO)
 # Atleta: Rodrigo Curvêllo
  
 # Primeiro Salto: 6.5 m
@@ -16,12 +16,13 @@ os.system('cls')
 # Saltos: 6.5 - 6.1 - 6.2 - 5.4 - 5.3
 # Média dos saltos: 5.9 m
 
+'''
 armazena_saltos = []
 encerra = 0
 
-print('''
+print("""
 -----------------> COMPETIÇÃO SALTO A DISTÂNCIA <-----------------
-''')
+""")
 print('Caso queira encerrar a listagem dos atletas basta aperta "ENTER" na hora de preencher o nome do atleta!\n')
 
 
@@ -90,3 +91,65 @@ for n in range(100):
 
     print()
     print('PROXIMO ATLETA!')
+'''
+
+# 2 - Uma grande emissora de televisão quer fazer uma enquete entre os seus telespectadores para saber qual o melhor jogador após cada jogo. Para isto, faz-se necessário o desenvolvimento de um programa, que será utilizado pelas telefonistas, para a computação dos votos. Sua equipe foi contratada para desenvolver este programa, utilizando a linguagem de programação C++. Para computar cada voto, a telefonista digitará um número, entre 1 e 23, correspondente ao número da camisa do jogador. Um número de jogador igual zero, indica que a votação foi encerrada. Se um número inválido for digitado, o programa deve ignorá-lo, mostrando uma breve mensagem de aviso, e voltando a pedir outro número. Após o final da votação, o programa deverá exibir:
+# O total de votos computados;
+# Os númeos e respectivos votos de todos os jogadores que receberam votos;
+# O percentual de votos de cada um destes jogadores;
+# O número do jogador escolhido como o melhor jogador da partida, juntamente com o número de votos e o percentual de votos dados a ele.
+# Observe que os votos inválidos e o zero final não devem ser computados como votos. O resultado aparece ordenado pelo número do jogador. O programa deve fazer uso de arrays. O programa deverá executar o cálculo do percentual de cada jogador através de uma função. Esta função receberá dois parâmetros: o número de votos de um jogador e o total de votos. A função calculará o percentual e retornará o valor calculado. Abaixo segue uma tela de exemplo. O disposição das informações deve ser o mais próxima possível ao exemplo. Os dados são fictícios e podem mudar a cada execução do programa. Ao final, o programa deve ainda gravar os dados referentes ao resultado da votação em um arquivo texto no disco, obedecendo a mesma disposição apresentada na tela.
+# Enquete: Quem foi o melhor jogador?
+
+# Número do jogador (0=fim): 9
+# Número do jogador (0=fim): 10
+# Número do jogador (0=fim): 9
+# Número do jogador (0=fim): 10
+# Número do jogador (0=fim): 11
+# Número do jogador (0=fim): 10
+# Número do jogador (0=fim): 50
+# Informe um valor entre 1 e 23 ou 0 para sair!
+# Número do jogador (0=fim): 9
+# Número do jogador (0=fim): 9
+# Número do jogador (0=fim): 0
+
+# Resultado da votação:
+
+# Foram computados 8 votos.
+
+# Jogador Votos           %
+# 9               4               50,0%
+# 10              3               37,5%
+# 11              1               12,5%
+# O melhor jogador foi o número 9, com 4 votos, correspondendo a 50% do total de votos.
+
+armazena_votos = []
+
+while True:
+    validacao = numero_jogador < 0 or numero_jogador > 23
+
+    try:
+        numero_jogador = int(input('Número do Jogador: '))
+    except:
+        while validacao == True:
+            print('Informe um valor entre 1 e 23, ou 0 para sair.')
+            numero_jogador = int(input('Número do Jogador: '))
+
+        else:
+            continue
+
+    if numero_jogador == 0:
+        print('PROGRAMA ENCERRADO!')
+        break
+    else:
+        print(f'Voto no número {numero_jogador} computado!')
+        armazena_votos.append(numero_jogador)
+
+    # while validacao == False: 
+    #     continue
+    # else:
+    #     print('Informe um valor entre 1 e 23, ou 0 para sair.')
+    #     # numero_jogador = int(input('Número do Jogador: '))
+    
+
+print(armazena_votos)
