@@ -74,12 +74,14 @@ for n in range(100):
     
     print()
 
-    """Exibindo as informações"""
+    """Exibindo as informações
+    O 'end=' é para não pular linha e os valores dos saltos serem impressos na mesma linha, sendo assim exibido conforme o exercicio
+    """
     print(f'Atleta: {atleta}')
     print('Saltos: ',end='')
+    """Imprimindo os valores dos saltos"""
     for v in armazena_saltos:
         print(v, end=' - ')
-        
 
     print(f'\nMédia dos Saltos: {round(media,2)}') 
     
