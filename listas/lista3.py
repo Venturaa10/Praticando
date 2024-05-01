@@ -149,6 +149,8 @@ while True:
         armazena_votos.append(numero_jogador)
 
 verifica_repeticao = []
+armazena_votos.sort()
+
 
 for voto in armazena_votos:
         if voto not in verifica_repeticao:
@@ -157,6 +159,7 @@ for voto in armazena_votos:
                 contador_de_ocorrencia = armazena_votos.count(voto)
                 calcula_porcem = contador_de_ocorrencia / len(armazena_votos) * 100
                 print(f'Jogador Número {voto}  | Votos Recebidos: {contador_de_ocorrencia}  | Porcentagem: {calcula_porcem:.2f}%')
+            
 
         else:
             pass
