@@ -124,9 +124,10 @@ for n in range(100):
 # O melhor jogador foi o número 9, com 4 votos, correspondendo a 50% do total de votos.
 
 """Está lista armazena todos os votos de acordo com o número da camisa do jogador"""
+
+'''
 armazena_votos = []
 
-'''    
 while True:
     """
     - Tratamento de erro caso o usuario digite um valor diferente de um número inteiro, retornando a variavel para digitar outro número
@@ -231,3 +232,96 @@ print(f'Vencedor é o jogador número {numero_vencedor} com {votos_vencedor} vot
 # Total                    8800
 
 # O Sistema Operacional mais votado foi o Unix, com 3500 votos, correspondendo a 40% dos votos.
+armazena_escolha = []
+def sistema_operacional(nome): 
+    print(f'{nome} | Votos Recebidos: {contador_de_ocorrencia}  | Porcentagem: {calcula_porcem:.2f}%')
+
+exibir = ('''
+    !Sistemas Operacionais!
+    
+        1- Windows Server
+        2- Unix
+        3- Linux
+        4- Netware
+        5- Mac OS
+        6- Outro
+      
+    0 - Para encerrar o programa
+''')
+
+
+while True:
+    """
+    - Tratamento de erro caso o usuario digite um valor diferente de um número inteiro, retornando a variavel para digitar outro número
+    - O programa só continuara quando receber um valor valido
+    """
+    try:
+        # numero_jogador = int(input('Número do Jogador: '))
+        for i in range(0,50):
+            # numero_sistema = int(input('Qual o melhor Sistema Operacional para uso em servidores? '))
+            numero_sistema = random.randint(0,7)      
+    except:
+        os.system('cls')
+        print(exibir)
+        print('Valor Invalido!')
+        continue; numero_sistema
+
+    """Em caso de 0, o programa será encerrado, se for menor que 0 ou maior que 23, retornará uma mensagem de aviso e a para digitar novamente até o usuario digitar um valor valido, se não o voto será computado e armazenado na lista"""
+    if numero_sistema == 0:
+        print()
+        print('PROGRAMA ENCERRADO!')
+        break
+    elif numero_sistema < 0 or numero_sistema > 6:
+        os.system('cls')
+        print(exibir)
+        print('Informe um número entre 1 e 6 de acordo com o sistema operacional de sua preferencia, ou 0 para encerrar!')
+        continue;numero_sistema
+    else:
+        os.system('cls')
+        print(exibir)
+        print(f'Voto no número {numero_sistema} computado!')
+        armazena_escolha.append(numero_sistema)
+        continue;numero_sistema
+
+print(armazena_escolha)
+
+verifica_repeticao = []
+armazena_escolha.sort()
+
+
+for voto in armazena_escolha:
+        """
+        - Essa condição é para evitar que seja contabilizado e exibido a votação de um número já contabilizado pelo programa, ou seja, se esse valor (Número do jogador e a quantidade de votos recebidos) não estiver na lista de verificação, ele será contabilizado e armazenado na lista.
+
+        - Caso retorne False, o programa continuara sem duplicar os votos do jogador
+        """
+        if voto not in verifica_repeticao:
+            """ 
+            - O Loop adiciona o voto desse jogaodr na lista de verificação
+            - Conta a quantidade de votos que o jogador recebeu, utilizando o metodo count, que retornara o número de ocorrencias que o número do jogador tem na lista de 'armazena_votos'
+            - Calcula a porcentagem dos votos recebidos 
+            """
+            for i in range(1):
+                verifica_repeticao.append(voto) 
+                contador_de_ocorrencia = armazena_escolha.count(voto)
+                calcula_porcem = contador_de_ocorrencia / len(armazena_escolha) * 100
+
+            if contador_de_ocorrencia == 1:
+                sistema_operacional('Windows Server')
+            elif contador_de_ocorrencia == 2:
+                sistema_operacional('Unix')
+            elif contador_de_ocorrencia == 3:
+                sistema_operacional('Lunix')
+            elif contador_de_ocorrencia == 4:
+                sistema_operacional('Netware')
+            elif contador_de_ocorrencia == 5:
+                sistema_operacional('Mac OS')
+            elif contador_de_ocorrencia == 6:
+                sistema_operacional('Outro')
+
+
+        else:
+            pass
+
+print()
+print(f'Foram computados {len(armazena_escolha)} votos!')
