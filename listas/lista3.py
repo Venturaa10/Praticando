@@ -127,13 +127,16 @@ armazena_votos = []
     
 while True:
     try:
-        numero_jogador = int(input('Número do Jogador: '))        
+        # numero_jogador = int(input('Número do Jogador: '))
+        for i in range(0,50):
+            numero_jogador = random.randint(0,25)      
     except:
         os.system('cls')
         print('Valor Invalido!')
         continue; numero_jogador
 
     if numero_jogador == 0:
+        print()
         print('PROGRAMA ENCERRADO!')
         break
     elif numero_jogador < 0 or numero_jogador > 23:
@@ -145,6 +148,15 @@ while True:
         print(f'Voto no número {numero_jogador} computado!')
         armazena_votos.append(numero_jogador)
 
-    
+verifica_repeticao = []
+for voto in armazena_votos:
+        if voto not in verifica_repeticao:
+            verifica_repeticao.append(voto) 
+            print(f'Jogador Número {voto}  | Votos Recebidos: {armazena_votos.count(voto)}  | ')
+        else:
+            pass
+
+print()    
 print(armazena_votos)
-print
+print(f'Foram computados {len(armazena_votos)} votos!')
+
