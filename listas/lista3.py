@@ -124,32 +124,26 @@ for n in range(100):
 # O melhor jogador foi o número 9, com 4 votos, correspondendo a 50% do total de votos.
 
 armazena_votos = []
-
+    
 while True:
-    validacao = numero_jogador < 0 or numero_jogador > 23
-
     try:
-        numero_jogador = int(input('Número do Jogador: '))
+        numero_jogador = int(input('Número do Jogador: '))        
     except:
-        while validacao == True:
-            print('Informe um valor entre 1 e 23, ou 0 para sair.')
-            numero_jogador = int(input('Número do Jogador: '))
-
-        else:
-            continue
+        os.system('cls')
+        print('Valor Invalido!')
+        continue; numero_jogador
 
     if numero_jogador == 0:
         print('PROGRAMA ENCERRADO!')
         break
+    elif numero_jogador < 0 or numero_jogador > 23:
+        os.system('cls')
+        print('Informe um número entre 1 e 23, ou 0 para encerrar!')
+        continue; numero_jogador
     else:
+        os.system('cls')
         print(f'Voto no número {numero_jogador} computado!')
         armazena_votos.append(numero_jogador)
 
-    # while validacao == False: 
-    #     continue
-    # else:
-    #     print('Informe um valor entre 1 e 23, ou 0 para sair.')
-    #     # numero_jogador = int(input('Número do Jogador: '))
     
-
 print(armazena_votos)
