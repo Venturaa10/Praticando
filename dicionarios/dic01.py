@@ -58,9 +58,19 @@ print(f'Quantidades de unidades de frutas: {sum(frutas.values())}')
 for fruta in frutas:
     print(fruta)
 
-"""Revisar a explicação da 'key=lambda' """
+"""Revisar a explicação da 'key=lambda' 
+
+- frutas.items() retorna uma lista de tuplas contendo cada par chave-valor do dicionário.
+- max() é usado para encontrar o par chave-valor com o maior valor no dicionário.
+- A chave key=lambda item: item[1] especifica que a comparação deve ser feita com base no segundo elemento de cada tupla, que representa a quantidade da fruta.
+
+maior_qtd[0] retorna a chave da fruta com a maior quantidade.
+maior_qtd[1] retorna a quantidade da fruta com a maior quantidade.
+
+
+"""
 maior_qtd = max(frutas.items(), key=lambda item:item[1])
-print(f'A fruta em maior quantidade no estoque contém: {maior_qtd} unidades.')
+print(f'O(A) {maior_qtd[0]} é a fruta em maior quantidade no estoque, contendo: {maior_qtd[1]} unidades.')
 """
 print(f'Removendo fruta: {frutas.popitem()}\n') #Remove o ultimo item adicionado ao dicionario
 """
