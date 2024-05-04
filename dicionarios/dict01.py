@@ -71,15 +71,15 @@ maior_qtd[1] retorna a quantidade da fruta com a maior quantidade.
 """
 maior_qtd = max(frutas.items(), key=lambda item:item[1])
 print(f'O(A) {maior_qtd[0]} é a fruta em maior quantidade no estoque, contendo: {maior_qtd[1]} unidades.')
-"""
+
 print(f'Removendo fruta: {frutas.popitem()}\n') #Remove o ultimo item adicionado ao dicionario
-"""
-"""
+
+
 print(f'Removendo chave especifica: {frutas.pop('Pera')}') #Remove a chave especifica, e retorna o valor dessa chave
 print(f'Dicionario atualizado: {frutas}')
 print()
-"""
-"""
+
+
 frutas2 = {}
 frutas2['Abacaxi'] = 27
 frutas2['Laranja'] = 17
@@ -95,5 +95,5 @@ if len(frutas) == 0:
     print('Não há frutas!')
 else:
     print(frutas)
-"""
+
 
