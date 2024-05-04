@@ -43,7 +43,9 @@ else:
 
 # 4 - Listar Todas as Palavras:
 # Mostre todas as palavras presentes no dicionário, uma por linha.
-
+for palavra in dicionario:
+    print(palavra)
 
 # 5 - Contagem de Palavras:
 # Conte quantas palavras existem no dicionário e exiba o total para o usuário.
+print(f'Existem o total de {len(dicionario)} no dicionario!')
