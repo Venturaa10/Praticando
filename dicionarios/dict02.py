@@ -90,14 +90,24 @@ print()
 turma = {}
 notas_alunos = []
 for aluno in range(0,qtd_alunos):
-    aluno = random.choice(armazena_nome)
 
-    if len(turma) == len(armazena_nome):
+    aluno = random.choice(armazena_nome) #.choice, está retornando um valor aleatoriamente de dentro da lista 'armazena_nome'
+
+    """Essa condicional verifica:
+    Se a quantidade de chaves em turma for equivalente aos nomes pré definidos que foram fornecidos, significa que não existe mais aluno para ser acrescentado a turma, logo o loop será encerrado.
+    Se não, o loop continuara rodando
+    """
+    if len(turma.keys()) == len(armazena_nome):
+        print()
         print('TURMA CHEIA!')
         break
     else:
         pass
 
+    """Loop responsavél por verificar se esse nome/aluno já existe na turma, para evitar nomes duplicados.
+    Caso retorne TRUE, será escolhido outro nome da lista que armazena nomes pré definidos até que seja retornado um nome novo
+    Caso retorne FALSE, O novo aluno será armazenado no dicionario 'turma' como chave
+    """
     while aluno in turma.keys():
         aluno = random.choice(armazena_nome)
     
