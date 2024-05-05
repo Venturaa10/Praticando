@@ -29,15 +29,27 @@ print(armazena_palavra)
 
 # 2 - Mesclar Dicionários Únicos:
 # Escreva uma função que aceita uma lista de dicionários como entrada e retorna um único dicionário que contém todas as chaves e seus respectivos valores únicos de todos os dicionários de entrada.
+
+"""As três listas que vou armazenar em uma única lista sem valores repetidos"""
 dic1 = {'Primeiro': 1, 'Segundo': 2, 'Terceiro': 3, 'Quarto': 4, 'Quinto':5}
 dic2 = {'Sexto': 6, 'Setimo': 7, 'Oitavo': 8, 'Quarto': 4, 'Decimo':10}
 dic3 = {'Onze': 11, 'Doze': 12, 'Setimo': 7, 'Quatorze': 14, 'Quinze':15}
 
-
+"""Lista vai receber as outras listas"""
 dic_principal = {}
 
 def recebe_dic(dicionario):
+    """Função responsavél pela verificação e armazenamento das informações na lista principal
+    Recebe como parametro o dicionario que será armazenado no dicionario principal
+    """
+    
+    """
+    Para cada elemento no dicionario, será realizada a seguinte verificação:
+    Se o elemento não estiver na lista principal, a chave e o valor da chave serão armazenados dentro da principal 
+    Se não, será exibida uma mensagem e o programa continuara
+    """
     for v in dicionario:
+        
         if v not in dic_principal:
             print(f'Chave "{v}" adicionado(a) ao dicionario principal!')
             valor_chave = dicionario[v]
