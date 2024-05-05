@@ -4,7 +4,7 @@ os.system('cls')
 
 # 1- Contagem de Palavras:
 # Escreva um programa que recebe uma string como entrada e conta a ocorrência de cada palavra na string. Em seguida, armazene essas contagens em um dicionário onde as chaves são as palavras e os valores são as contagens de ocorrências.
-
+'''
 """Dicionario"""
 armazena_palavra = {}
 
@@ -25,10 +25,36 @@ for i in range(0,8):
         armazena_palavra[palavra] = 1
 
 print(armazena_palavra)
+'''
 
 # 2 - Mesclar Dicionários Únicos:
 # Escreva uma função que aceita uma lista de dicionários como entrada e retorna um único dicionário que contém todas as chaves e seus respectivos valores únicos de todos os dicionários de entrada.
- 
+dic1 = {'Primeiro': 1, 'Segundo': 2, 'Terceiro': 3, 'Quarto': 4, 'Quinto':5}
+dic2 = {'Sexto': 6, 'Setimo': 7, 'Oitavo': 8, 'Quarto': 4, 'Decimo':10}
+dic3 = {'Onze': 11, 'Doze': 12, 'Setimo': 7, 'Quatorze': 14, 'Quinze':15}
+
+
+dic_principal = {}
+
+def recebe_dic(dicionario):
+    for v in dicionario:
+        if v not in dic_principal:
+            print(f'Chave "{v}" adicionado(a) ao dicionario principal!')
+            valor_chave = dicionario[v]
+            dic_principal[v] = valor_chave
+        else:
+            print(f'Chave "{v}" já existente!')
+    
+    
+    print()
+    input(f'VERIFICAÇÃO CONCLUÍDA COM SUCESSO!\n ENTER PARA CONTINUAR')
+    print()
+
+recebe_dic(dic1)
+recebe_dic(dic2)
+recebe_dic(dic3)
+
+print(dic_principal)
 
 # 3 - Média de Notas:
 # Escreva um programa que pede ao usuário para inserir o número de alunos em uma turma, seus nomes e suas notas (em uma escala de 0 a 10) como entrada. Em seguida, calcule e imprima a média das notas. Armazene os nomes dos alunos como chaves e suas notas como valores em um dicionário.
