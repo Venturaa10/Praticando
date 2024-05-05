@@ -29,7 +29,8 @@ print(armazena_palavra)
 
 # 2 - Mesclar Dicionários Únicos:
 # Escreva uma função que aceita uma lista de dicionários como entrada e retorna um único dicionário que contém todas as chaves e seus respectivos valores únicos de todos os dicionários de entrada.
-
+'''
+# Acrescentar uma verificação em caso de chaves iguais, qual chave será armazenada, o criterio deve ser decidido baseado no valor das chaves! 
 """As três listas que vou armazenar em uma única lista sem valores repetidos"""
 dic1 = {'Primeiro': 1, 'Segundo': 2, 'Terceiro': 3, 'Quarto': 4, 'Quinto':5}
 dic2 = {'Sexto': 6, 'Setimo': 7, 'Oitavo': 8, 'Quarto': 4, 'Decimo':10}
@@ -67,6 +68,7 @@ recebe_dic(dic2)
 recebe_dic(dic3)
 
 print(dic_principal)
+'''
 
 # 3 - Média de Notas:
 # Escreva um programa que pede ao usuário para inserir o número de alunos em uma turma, seus nomes e suas notas (em uma escala de 0 a 10) como entrada. Em seguida, calcule e imprima a média das notas. Armazene os nomes dos alunos como chaves e suas notas como valores em um dicionário.
