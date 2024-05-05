@@ -72,25 +72,47 @@ print(dic_principal)
 
 # 3 - Média de Notas:
 # Escreva um programa que pede ao usuário para inserir o número de alunos em uma turma, seus nomes e suas notas (em uma escala de 0 a 10) como entrada. Em seguida, calcule e imprima a média das notas. Armazene os nomes dos alunos como chaves e suas notas como valores em um dicionário.
-armazena_nome = ['João','Beatriz','Lucas','Jessica','Gabriel','Vinicius','Maria','Pedro','Adriana','Wesley']
+
+""" Melhorias a serem feitas no código
+
+Verificar se as notas inseridas estão dentro do intervalo válido (0 a 10).
+Melhorar a interação com o usuário, fornecendo mensagens mais descritivas e instruções claras.
+Adicionar tratamento de erros para lidar com entradas inválidas do usuário.
+Permitir que o usuário insira os nomes dos alunos em vez de selecioná-los aleatoriamente de uma lista predefinida.
+Oferecer opções adicionais, como calcular a nota mais alta ou mais baixa da turma, além da média.
+"""
+
+"""Essa lista é apenas para agilizar os testes e não precisar ficar digitando nomes diversas vezes"""
+armazena_nome = ['João','Beatriz','Lucas','Jessica','Gabriel','Vinicius','Maria','Pedro','Adriana','Wesley','Eduarda','Patricia']
+qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
+print()
 
 turma = {}
-for i in armazena_nome:
-    aluno = i
+notas_alunos = []
+for aluno in range(0,qtd_alunos):
 
+    aluno = random.choice(armazena_nome)
     if aluno not in turma:
         turma[aluno] = 0
     
     else:
-        print(f'O(A) {aluno} já esta na turma')
-        continue;
+        print(f'{aluno} já está na turma!')
+        continue; aluno
     
     for n in range(0,5):
+        """Gerando notas automaticamente de maneira aleatorio apenas para agilizar o teste do codigo"""
         nota = random.randint(0,10)
+        notas_alunos.append(nota)
+        
         print(f'{n + 1}º Nota do(a) {aluno}: {nota}')
-        turma[aluno] = nota
 
+    media = sum(notas_alunos) / len(notas_alunos)
+    print(f'Média do(a) aluno {aluno}: {media:.2f}')
     print()
 
-    
+    """Limpando a lista que armazena as notas do aluno anterior"""
+    notas_alunos.clear()
+
 print(turma)
+print(notas_alunos)
+    
