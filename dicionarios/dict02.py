@@ -90,29 +90,40 @@ print()
 turma = {}
 notas_alunos = []
 for aluno in range(0,qtd_alunos):
-
     aluno = random.choice(armazena_nome)
-    if aluno not in turma:
-        turma[aluno] = 0
+
+    if len(turma) == len(armazena_nome):
+        print('TURMA CHEIA!')
+        break
+    else:
+        pass
+
+    while aluno in turma.keys():
+        aluno = random.choice(armazena_nome)
     
     else:
-        print(f'{aluno} já está na turma!')
-        continue; aluno
-    
+        turma[aluno] = 0
+
+    """
+    Gerando notas automaticamente de maneira aleatorio apenas para agilizar o teste do codigo
+    Adicionando a nota do aluno a lista que armazenda a nota de cada aluno individualmente a cada loop
+    """
     for n in range(0,5):
-        """Gerando notas automaticamente de maneira aleatorio apenas para agilizar o teste do codigo"""
         nota = random.randint(0,10)
         notas_alunos.append(nota)
-        
-        print(f'{n + 1}º Nota do(a) {aluno}: {nota}')
 
+    """Gerando a média do aluno e a imprimindo"""
     media = sum(notas_alunos) / len(notas_alunos)
-    print(f'Média do(a) aluno {aluno}: {media:.2f}')
-    print()
+
+    for i in range(1):
+        print(f'''
+            Aluno: {aluno}
+            Notas: {notas_alunos}
+            Média: {media:.2f}''')
 
     """Limpando a lista que armazena as notas do aluno anterior"""
     notas_alunos.clear()
 
-print(turma)
-print(notas_alunos)
-    
+print()
+print(f'Turma: {turma.keys()}')
+print(f'Quantidade de Alunos: {len(turma)}')
