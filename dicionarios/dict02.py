@@ -72,4 +72,25 @@ print(dic_principal)
 
 # 3 - Média de Notas:
 # Escreva um programa que pede ao usuário para inserir o número de alunos em uma turma, seus nomes e suas notas (em uma escala de 0 a 10) como entrada. Em seguida, calcule e imprima a média das notas. Armazene os nomes dos alunos como chaves e suas notas como valores em um dicionário.
+armazena_nome = ['João','Beatriz','Lucas','Jessica','Gabriel','Vinicius','Maria','Pedro','Adriana','Wesley']
 
+turma = {}
+for i in armazena_nome:
+    aluno = i
+
+    if aluno not in turma:
+        turma[aluno] = 0
+    
+    else:
+        print(f'O(A) {aluno} já esta na turma')
+        continue;
+    
+    for n in range(0,5):
+        nota = random.randint(0,10)
+        print(f'{n + 1}º Nota do(a) {aluno}: {nota}')
+        turma[aluno] = nota
+
+    print()
+
+    
+print(turma)
