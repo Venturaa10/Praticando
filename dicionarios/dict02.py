@@ -79,16 +79,22 @@ Verificar se as notas inseridas estão dentro do intervalo válido (0 a 10).
 Melhorar a interação com o usuário, fornecendo mensagens mais descritivas e instruções claras.
 Adicionar tratamento de erros para lidar com entradas inválidas do usuário.
 Permitir que o usuário insira os nomes dos alunos em vez de selecioná-los aleatoriamente de uma lista predefinida.
-Oferecer opções adicionais, como calcular a nota mais alta ou mais baixa da turma, além da média.
+Oferecer opções adicionais, como calcular a nota mais alta ou mais baixa da turma, além da média. (FEITO PARCIALMENTE, PRECISO PERGUNTAR AO USUARIO SE QUER SER INFORMADO SOBRE A MAIOR E MENOR NOTA DO ALUNO)
+Adicionar um tratamento de erro para o caso em que o usuário insere uma quantidade de alunos menor do que o número de nomes disponíveis na lista armazena_nome.
 """
 
 """Essa lista é apenas para agilizar os testes e não precisar ficar digitando nomes diversas vezes"""
 armazena_nome = ['João','Beatriz','Lucas','Jessica','Gabriel','Vinicius','Maria','Pedro','Adriana','Wesley','Eduarda','Patricia']
+
+
 qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
+
 print()
 
 turma = {}
 notas_alunos = []
+
+print('INFORMAÇÕES DOS ALUNOS | NOTAS | MÉDIAS')
 for aluno in range(0,qtd_alunos):
 
     aluno = random.choice(armazena_nome) #.choice, está retornando um valor aleatoriamente de dentro da lista 'armazena_nome'
@@ -119,17 +125,20 @@ for aluno in range(0,qtd_alunos):
     Adicionando a nota do aluno a lista que armazenda a nota de cada aluno individualmente a cada loop
     """
     for n in range(0,5):
-        nota = random.randint(0,10)
+        nota = random.randint(0,10) #.randint -> Gerando um numero aleatorio inteiro entre 0 e 10
         notas_alunos.append(nota)
 
-    """Gerando a média do aluno e a imprimindo"""
+    """Gerando a média do aluno"""
     media = sum(notas_alunos) / len(notas_alunos)
 
+    """Imprimindo as informações sobre o aluno"""
     for i in range(1):
         print(f'''
-            Aluno: {aluno}
-            Notas: {notas_alunos}
-            Média: {media:.2f}''')
+        Aluno: {aluno}
+        Notas: {notas_alunos}
+        Maior Nota: {max(notas_alunos)}
+        Menor Nota: {min(notas_alunos)}
+        Média: {media:.2f}''')
 
     """Limpando a lista que armazena as notas do aluno anterior"""
     notas_alunos.clear()
