@@ -94,8 +94,7 @@ Essa lista é apenas para agilizar os testes e não precisar ficar digitando nom
 try:
     qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
 except:
-    input('Informação Invalida!')
-    os.system('python dicionarios\dict02.py')
+    input('Informe um número indicando o número de alunos na turma')
 
 
 
