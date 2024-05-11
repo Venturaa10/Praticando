@@ -75,7 +75,7 @@ print(dic_principal)
 
 """ Melhorias a serem feitas no código
 
-Verificar se as notas inseridas estão dentro do intervalo válido (0 a 10).
+Verificar se as notas inseridas estão dentro do intervalo válido (0 a 10). (FEITO)
 Melhorar a interação com o usuário, fornecendo mensagens mais descritivas e instruções claras.
 Adicionar tratamento de erros para lidar com entradas inválidas do usuário.
 Permitir que o usuário insira os nomes dos alunos em vez de selecioná-los aleatoriamente de uma lista predefinida.
@@ -83,8 +83,12 @@ Oferecer opções adicionais, como calcular a nota mais alta ou mais baixa da tu
 Adicionar um tratamento de erro para o caso em que o usuário insere uma quantidade de alunos menor do que o número de nomes disponíveis na lista armazena_nome.
 """
 
-"""Essa lista é apenas para agilizar os testes e não precisar ficar digitando nomes diversas vezes"""
-armazena_nome = ['João','Beatriz','Lucas','Jessica','Gabriel','Vinicius','Maria','Pedro','Adriana','Wesley','Eduarda','Patricia']
+"""        CÓDIGO PARA TESTES DE REFATORAMENTO DO CÓDIGO
+Essa lista é apenas para agilizar os testes e não precisar ficar digitando nomes diversas vezes
+- LINHA DE CÓDIGO COMENTADA ABAIXO É PARA TESTE
+
+# armazena_nome = ['João','Beatriz','Lucas','Jessica','Gabriel','Vinicius','Maria','Pedro','Adriana','Wesley','Eduarda','Patricia'] 
+"""
 
 
 qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
@@ -94,38 +98,65 @@ print()
 turma = {}
 notas_alunos = []
 
-print('INFORMAÇÕES DOS ALUNOS | NOTAS | MÉDIAS')
+print('INFORMAÇÕES DOS ALUNOS | NOTAS | MÉDIAS\n')
 for aluno in range(0,qtd_alunos):
+    aluno = input('Nome do aluno: ').capitalize().strip() # Linha para o usuario
 
-    aluno = random.choice(armazena_nome) #.choice, está retornando um valor aleatoriamente de dentro da lista 'armazena_nome'
+    # aluno = random.choice(armazena_nome) #.choice, está retornando um valor aleatoriamente de dentro da lista 'armazena_nome'
 
-    """Essa condicional verifica:
-    Se a quantidade de chaves em turma for equivalente aos nomes pré definidos que foram fornecidos, significa que não existe mais aluno para ser acrescentado a turma, logo o loop será encerrado.
-    Se não, o loop continuara rodando
-    """
-    if len(turma.keys()) == len(armazena_nome):
-        print()
-        print('TURMA CHEIA!')
-        break
+    while len(aluno) < 4:
+        print('Insira pelo menos o nome e um sobrenome do aluno!')
+        aluno = input('Nome do aluno:').capitalize().strip() # Linha para o usuario
+
     else:
         pass
 
-    """Loop responsavél por verificar se esse nome/aluno já existe na turma, para evitar nomes duplicados.
+    turma[aluno] = 0 #Adicionando o aluno ao dicionario
+
+    """        CÓDIGO PARA TESTES DE REFATORAMENTO DO CÓDIGO
+    Essa condicional verifica:
+    Se a quantidade de chaves em turma for equivalente aos nomes pré definidos que foram fornecidos, significa que não existe mais aluno para ser acrescentado a turma, logo o loop será encerrado.
+    Se não, o loop continuara rodando
+    - LINHA DE CÓDIGO COMENTADA ABAIXO É PARA TESTE 
+    # if len(turma.keys()) == len(armazena_nome):
+    #     print()
+    #     print('TURMA CHEIA!')
+    #     break
+    # else:
+    #     pass
+    """
+
+    """        CÓDIGO PARA TESTES DE REFATORAMENTO DO CÓDIGO
+    Loop responsavél por verificar se esse nome/aluno já existe na turma, para evitar nomes duplicados.
     Caso retorne TRUE, será escolhido outro nome da lista que armazena nomes pré definidos até que seja retornado um nome novo
     Caso retorne FALSE, O novo aluno será armazenado no dicionario 'turma' como chave
-    """
-    while aluno in turma.keys():
-        aluno = random.choice(armazena_nome)
+    - LINHA DE CÓDIGO COMENTADA ABAIXO É PARA TESTE 
+    # while aluno in turma.keys():
+    #     aluno = random.choice(armazena_nome)
     
-    else:
-        turma[aluno] = 0
+    # else:
+    #     turma[aluno] = 0
+    """
+
 
     """
     Gerando notas automaticamente de maneira aleatorio apenas para agilizar o teste do codigo
     Adicionando a nota do aluno a lista que armazenda a nota de cada aluno individualmente a cada loop
+    (while) -> Se a nota for maior que 10, será gerado uma mensagem informando para o usuario digitar uma nova nota no intervalo de 0 á 10
     """
     for n in range(0,5):
-        nota = random.randint(0,10) #.randint -> Gerando um numero aleatorio inteiro entre 0 e 10
+        nota = int(input(f'Informe {n+1}º nota do(a) {aluno}: '))
+
+        # nota = random.randint(0,15) #.randint -> Gerando um numero aleatorio inteiro entre 0 e 10
+        
+        while nota > 10:
+            input(f'O valor da nota ({nota}) está acima do limite (10)!\nESPAÇO para informar uma nova nota.')
+            nota = int(input(f'Informe {n+1}º nota do(a) {aluno}: '))
+
+            # nota = random.randint(0,15) #.randint -> Gerando um numero aleatorio inteiro entre 0 e 10
+        else: 
+            pass
+        
         notas_alunos.append(nota)
 
     """Gerando a média do aluno"""
@@ -141,8 +172,15 @@ for aluno in range(0,qtd_alunos):
         Média: {media:.2f}''')
 
     """Limpando a lista que armazena as notas do aluno anterior"""
+    print()
     notas_alunos.clear()
 
 print()
-print(f'Turma: {turma.keys()}')
+# print(f'Turma: {turma.keys()}')
+print('!TURMA!\n')
+for aluno, indice in enumerate(turma.keys()):
+    c = 0
+    print(f'{aluno+1}º: {indice}')
+
+print()
 print(f'Quantidade de Alunos: {len(turma)}')
