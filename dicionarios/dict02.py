@@ -76,9 +76,9 @@ print(dic_principal)
 """ Melhorias a serem feitas no código
 
 Verificar se as notas inseridas estão dentro do intervalo válido (0 a 10). (FEITO)
-Melhorar a interação com o usuário, fornecendo mensagens mais descritivas e instruções claras.
+Melhorar a interação com o usuário, fornecendo mensagens mais descritivas e instruções claras. (FEITO)
 Adicionar tratamento de erros para lidar com entradas inválidas do usuário.
-Permitir que o usuário insira os nomes dos alunos em vez de selecioná-los aleatoriamente de uma lista predefinida.
+Permitir que o usuário insira os nomes dos alunos em vez de selecioná-los aleatoriamente de uma lista predefinida. (FEITO)
 Oferecer opções adicionais, como calcular a nota mais alta ou mais baixa da turma, além da média. (FEITO PARCIALMENTE, PRECISO PERGUNTAR AO USUARIO SE QUER SER INFORMADO SOBRE A MAIOR E MENOR NOTA DO ALUNO)
 Adicionar um tratamento de erro para o caso em que o usuário insere uma quantidade de alunos menor do que o número de nomes disponíveis na lista armazena_nome.
 """
@@ -90,8 +90,14 @@ Essa lista é apenas para agilizar os testes e não precisar ficar digitando nom
 # armazena_nome = ['João','Beatriz','Lucas','Jessica','Gabriel','Vinicius','Maria','Pedro','Adriana','Wesley','Eduarda','Patricia'] 
 """
 
+""" Caso retorne uma opção invalida, o programa será executado automaticamente com o os.system('') que executara a linha entre as aspas no terminal."""
+try:
+    qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
+except:
+    input('Informação Invalida!')
+    os.system('python dicionarios\dict02.py')
 
-qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
+
 
 print()
 
@@ -176,10 +182,8 @@ for aluno in range(0,qtd_alunos):
     notas_alunos.clear()
 
 print()
-# print(f'Turma: {turma.keys()}')
 print('!TURMA!\n')
 for aluno, indice in enumerate(turma.keys()):
-    c = 0
     print(f'{aluno+1}º: {indice}')
 
 print()
