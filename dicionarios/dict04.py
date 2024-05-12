@@ -1,0 +1,1 @@
+# Cálculo de Média Ponderada: Escreva uma função que receba um dicionário onde as chaves são nomes de alunos e os valores são listas de suas notas. A função deve calcular a média ponderada de cada aluno, onde as notas têm pesos específicos, e retornar um novo dicionário com os nomes dos alunos como chaves e suas médias ponderadas como valores.
