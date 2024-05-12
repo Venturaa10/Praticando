@@ -91,11 +91,8 @@ Essa lista é apenas para agilizar os testes e não precisar ficar digitando nom
 """
 
 """ Caso retorne uma opção invalida, o programa será executado automaticamente com o os.system('') que executara a linha entre as aspas no terminal."""
-try:
-    qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
-except:
-    input('Informe um número indicando o número de alunos na turma')
 
+qtd_alunos = int(input('Quantidade de Alunos na Turma: '))
 
 
 print()
@@ -150,6 +147,7 @@ for aluno in range(0,qtd_alunos):
     (while) -> Se a nota for maior que 10, será gerado uma mensagem informando para o usuario digitar uma nova nota no intervalo de 0 á 10
     """
     for n in range(0,5):
+
         nota = int(input(f'Informe {n+1}º nota do(a) {aluno}: '))
 
         # nota = random.randint(0,15) #.randint -> Gerando um numero aleatorio inteiro entre 0 e 10
