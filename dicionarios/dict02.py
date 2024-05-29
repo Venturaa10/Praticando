@@ -83,7 +83,7 @@ Oferecer opções adicionais, como calcular a nota mais alta ou mais baixa da tu
 Adicionar um tratamento de erro para o caso em que o usuário insere uma quantidade de alunos menor do que o número de nomes disponíveis na lista armazena_nome.
 """
 
-"""        CÓDIGO PARA TESTES DE REFATORAMENTO DO CÓDIGO
+"""        Código para testes de refatoramento do código.
 Essa lista é apenas para agilizar os testes e não precisar ficar digitando nomes diversas vezes
 - LINHA DE CÓDIGO COMENTADA ABAIXO É PARA TESTE
 
@@ -115,7 +115,7 @@ for aluno in range(0,qtd_alunos):
 
     turma[aluno] = 0 #Adicionando o aluno ao dicionario
 
-    """        CÓDIGO PARA TESTES DE REFATORAMENTO DO CÓDIGO
+    """        Código para testes de refatoramento do código.
     Essa condicional verifica:
     Se a quantidade de chaves em turma for equivalente aos nomes pré definidos que foram fornecidos, significa que não existe mais aluno para ser acrescentado a turma, logo o loop será encerrado.
     Se não, o loop continuara rodando
@@ -128,7 +128,7 @@ for aluno in range(0,qtd_alunos):
     #     pass
     """
 
-    """        CÓDIGO PARA TESTES DE REFATORAMENTO DO CÓDIGO
+    """        Código para testes de refatoramento do código.
     Loop responsavél por verificar se esse nome/aluno já existe na turma, para evitar nomes duplicados.
     Caso retorne TRUE, será escolhido outro nome da lista que armazena nomes pré definidos até que seja retornado um nome novo
     Caso retorne FALSE, O novo aluno será armazenado no dicionario 'turma' como chave
