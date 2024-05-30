@@ -13,7 +13,7 @@ Exercício 3: Herança de Classes
 Crie uma classe chamada Aluno que herde da classe Pessoa do Exercício 1. Adicione um atributo adicional chamado matricula e um método mostrar_matricula() que imprime a matrícula do aluno.
 
 Exercício 4: Sobrescrita de Métodos
-Na classe Aluno do Exercício 3, sobrescreva o método mostrar_info() para incluir a matrícula do aluno.
+Na classe Aluno do Exercício 3, sobrescreva o método mostrar_info() para incluir a matrícula do aluno. (Feito)
 
 Estes exercícios fornecem uma base sólida para começar a trabalhar com classes em Python, abrangendo desde a criação básica de classes até conceitos mais avançados como herança e sobrescrita de métodos.
 '''
@@ -32,7 +32,7 @@ class Pessoa:
         '''Atualiza a idade da Pessoa'''
         nova_idade = int(input('Nova idade: '))
         while True:
-            if nova_idade > 0 and nova_idade < 100:
+            if 0 < nova_idade < 100:
                 print(f'Idade do(a) {self.nome} atualizada!')
                 self.idade = nova_idade 
                 break
@@ -41,7 +41,7 @@ class Pessoa:
                 break
 
     def __str__(self):
-        ''''''
+        '''Retorna uma representação em string das informações da Pessoa'''        
         return f'Nome: {self.nome} | Idade: {self.idade}'
 
 class Aluno(Pessoa):
@@ -51,12 +51,21 @@ class Aluno(Pessoa):
         super().__init__(nome,idade)
         self.matricula = matricula 
 
+    def mostrar_info(self):
+        '''
+        Exercicio 04
+        Imprime as informações do Aluno, incluindo a matrícula
+        '''
+        print(f'Nome: {self.nome} | Idade: {self.idade} | Nº Matrícula: {self.matricula}')
+
     def mostrar_matricula(self):
         print(f'Matricula: {self.matricula}')
 
     def __str__(self):
-        return f'Nome: {self.nome} | Idade: {self.idade} | Nº Matricula: {self.matricula}'
+        '''Retorna uma representação em string das informações do Aluno'''
+        return f'Nome: {self.nome} | Idade: {self.idade} | Nº Matrícula: {self.matricula}'
         
+
 p1 = Pessoa('João',20)
 print(p1) # Imprimindo com o metodo especial str
 p1.mostrar_info() #Imprimindo utilizando o metodo mostrar_info
@@ -66,6 +75,6 @@ print(p1) #Exibindo a Pessoa com a idade atualizada
 
 a1 = Aluno('Vinicius',18,2133)
 a1.mostrar_matricula()
-print(a1)
+a1.mostrar_info()
 
 
