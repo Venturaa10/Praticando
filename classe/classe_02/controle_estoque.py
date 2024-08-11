@@ -35,40 +35,77 @@ class Produto:
         self.preco = preco
         self.quantidade = quantidade
 
-    def adicionar_estoque(self, add_quantidade):
+    def adicionar_estoque(self):
         os.system('cls')
-        print('Atualizar Quantidade em Estoque')
-        self.quantidade = self.quantidade + add_quantidade
-        return print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade}')
+        print('Atualizar Quantidade em Estoque\n')
+        try:
+            add_quantidade = int(input('Quantidade para adicionar ao estoque: '))
+            if add_quantidade <= 0:
+                print('Não foi possível alterar estoque, verifique a quantidade informada!')
+            else:
+                self.quantidade = self.quantidade + add_quantidade
+                print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade:.2f}')
+                input()
+        except:
+            input('TESTE ERROR')
+            
 
-
-    def remover_estoque(self, remov_quantidade):
-        print('Remover do estoque')
+    def remover_estoque(self):
+        os.system('cls')
+        print('Remover do estoque\n')
 
         if self.quantidade < 1:
             print(f'Estoque insuficiente do produto {self.nome}! ')
+            input()
         else:
+            remov_quantidade = int(input('Quantidade para remover do estoque: '))
+            self.quantidade = self.quantidade - remov_quantidade
             print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade:.2f}')
-            # remov_quantidade = input(int('Quantas unidades deseja remover do estoque? '))
-            return 
+            input()
 
-    def atualizar_preco(self, novo_preco):
-        print('ATUALIZAÇÃO DE PREÇO')
-        novo_preco = input(int(f'Novo preço do produto {self.nome}: '))
-        self.preco = novo_preco
+    def atualizar_preco(self):
+        os.system('cls')
+        print('ATUALIZAÇÃO DE PREÇO\n')
+        try:
+            novo_preco = float(input(f'Novo Preço: '))
+            self.preco = novo_preco
+            print(f'Nome do Produto: {self.nome}\nPreço Atualizado: {self.preco:.2f}')
+            input()
+        except:
+            input('TESTE ERROR!')
 
     def mostrar_informacoes(self):
         print(f'''
+            INFORMAÇÕES DO PRODUTO\n
         Nome do Produto: {self.nome}
         Preço: {self.preco}
         Quantidade em Estoque: {self.quantidade:.2f}
         ''')
     
 
-produto1 = Produto('Camisa do Bayern',250,50)
-produto1.adicionar_estoque(25)
-produto1.adicionar_estoque(25)
-produto1.mostrar_informacoes()
+# produto1 = Produto('Camisa do Bayern',250,50)
+# produto1.adicionar_estoque()
+# produto1.remover_estoque()
+# produto1.atualizar_preco()
+# produto1.mostrar_informacoes()
+
+# produto2 = Produto('Camisa do Barcelona',280,150)
+# produto2.adicionar_estoque()
+# produto2.remover_estoque()
+# produto2.atualizar_preco()
+# produto2.mostrar_informacoes()
+
+# produto3 = Produto('Camisa do Real Madrid',270,100)
+# produto3.adicionar_estoque()
+# produto3.remover_estoque()
+# produto3.atualizar_preco()
+# produto3.mostrar_informacoes()
+
+produto4 = Produto('Camisa Teste Estoque Insuficiente',180,0)
+produto4.adicionar_estoque()
+produto4.remover_estoque()
+produto4.atualizar_preco()
+produto4.mostrar_informacoes()
 
 
 
