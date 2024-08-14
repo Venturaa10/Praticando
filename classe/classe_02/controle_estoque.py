@@ -41,35 +41,48 @@ class Produto:
         try:
             add_quantidade = int(input('Quantidade para adicionar ao estoque: '))
             if add_quantidade <= 0:
-                print('Não foi possível alterar estoque, verifique a quantidade informada!')
+                print('Não é possivel adicionar um valor negativo ou igual a zero ao estoque!')
             else:
                 self.quantidade = self.quantidade + add_quantidade
-                print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade:.2f}')
+                # print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade:.2f}')
+                print(f'''
+                      Informações do Produto\n
+            Nome do Produto: {self.nome} | Qtd. Estoque: {self.quantidade} | Preço R$:{self.preco:.2f}''')
                 input()
         except:
-            input('TESTE ERROR')
+            input('Não foi possível alterar estoque, verifique a quantidade informada!')
             
 
     def remover_estoque(self):
         os.system('cls')
         print('Remover do estoque\n')
+        if self.quantidade >= 1:
+            try:
+                print(f'\nEstoque Atual: {self.quantidade}')
+                remov_quantidade = int(input('Quantidade para remover do estoque: '))
 
-        if self.quantidade < 1:
-            print(f'Estoque insuficiente do produto {self.nome}! ')
-            input()
+                if remov_quantidade <= 0:
+                    print('O valor não pode ser negativo ou igual a zero!') 
+                else:
+                    self.quantidade = self.quantidade - remov_quantidade
+                    print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade}')
+                    input()
+            except:
+                print('A quantidade informada é invalida!')
+                input() 
         else:
-            remov_quantidade = int(input('Quantidade para remover do estoque: '))
-            self.quantidade = self.quantidade - remov_quantidade
-            print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade:.2f}')
+            print('O estoque atual é negativo ou igual a zero, verificar!')
+            print(f'Produto: {self.nome} | Estoque Atual: {self.quantidade}')
             input()
 
     def atualizar_preco(self):
         os.system('cls')
         print('ATUALIZAÇÃO DE PREÇO\n')
         try:
+            print(f'Preço Atual: R${self.preco:.2f}')
             novo_preco = float(input(f'Novo Preço: '))
             self.preco = novo_preco
-            print(f'Nome do Produto: {self.nome}\nPreço Atualizado: {self.preco:.2f}')
+            print(f'Nome do Produto: {self.nome}\nPreço Atualizado: R${self.preco:.2f}')
             input()
         except:
             input('TESTE ERROR!')
@@ -78,8 +91,8 @@ class Produto:
         print(f'''
             INFORMAÇÕES DO PRODUTO\n
         Nome do Produto: {self.nome}
-        Preço: {self.preco}
-        Quantidade em Estoque: {self.quantidade:.2f}
+        Preço: {self.preco:.2f}
+        Quantidade em Estoque: {self.quantidade}
         ''')
     
 
