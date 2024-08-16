@@ -2,33 +2,6 @@ import os
 from dataclasses import dataclass
 
 os.system('cls')
-'''Objetivo: Gerenciamento de Estoque
-Você vai criar um sistema simples para gerenciar o estoque de produtos. O sistema deve permitir as seguintes operações:
-
-Criação de Produtos:
-
-Defina uma classe Produto com os atributos:
-nome (string)
-preço (float)
-quantidade (int)
-Métodos da Classe Produto:
-
-adicionar_estoque(quantidade): Adiciona a quantidade especificada ao estoque do produto.
-remover_estoque(quantidade): Remove a quantidade especificada do estoque do produto, se houver estoque suficiente.
-atualizar_preço(novo_preço): Atualiza o preço do produto.
-mostrar_informacoes(): Exibe o nome, preço e quantidade atual do produto.
-Funções Adicionais:
-
-Criar Produtos:
-Crie pelo menos três produtos com nomes, preços e quantidades diferentes.
-Adicionar/Remover Estoque:
-Realize operações de adição e remoção de estoque para esses produtos.
-Atualizar Preços:
-Atualize o preço de pelo menos um dos produtos.
-Exibir Status do Estoque:
-Mostre as informações (nome, preço e quantidade) de todos os produtos.
-O objetivo é implementar e testar essas funcionalidades para gerenciar o estoque de forma eficiente.
-'''
 
 @dataclass
 class Produto:
