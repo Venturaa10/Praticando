@@ -1,6 +1,7 @@
 import os
-os.system('cls')
+from dataclasses import dataclass
 
+os.system('cls')
 '''Objetivo: Gerenciamento de Estoque
 Você vai criar um sistema simples para gerenciar o estoque de produtos. O sistema deve permitir as seguintes operações:
 
@@ -29,63 +30,59 @@ Mostre as informações (nome, preço e quantidade) de todos os produtos.
 O objetivo é implementar e testar essas funcionalidades para gerenciar o estoque de forma eficiente.
 '''
 
+@dataclass
 class Produto:
-    def __init__(self, nome, preco, quantidade):
-        self.nome = nome
-        self.preco = preco
-        self.quantidade = quantidade
-
+    # Definindo com "dataclass" o tipo de cada atributo da classe
+    nome: str
+    preco: float
+    quantidade: int
+    
     def adicionar_estoque(self):
-        os.system('cls')
-        print('Atualizar Quantidade em Estoque\n')
+        # os.system('cls')
+        print('ATUALIZAR QUANTIDADE EM ESTOQUE\n')
         try:
             add_quantidade = int(input('Quantidade para adicionar ao estoque: '))
             if add_quantidade <= 0:
                 print('Não é possivel adicionar um valor negativo ou igual a zero ao estoque!')
             else:
                 self.quantidade = self.quantidade + add_quantidade
-                # print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade:.2f}')
                 print(f'''
                       Informações do Produto\n
             Nome do Produto: {self.nome} | Qtd. Estoque: {self.quantidade} | Preço R$:{self.preco:.2f}''')
-                input()
         except:
-            input('Não foi possível alterar estoque, verifique a quantidade informada!')
+            print('Não foi possível alterar estoque, verifique a quantidade informada!')
             
 
     def remover_estoque(self):
-        os.system('cls')
-        print('Remover do estoque\n')
+        # os.system('cls')
+        print('REMOVER DO ESTOQUE')
         if self.quantidade >= 1:
             try:
                 print(f'\nEstoque Atual: {self.quantidade}')
                 remov_quantidade = int(input('Quantidade para remover do estoque: '))
-
-                if remov_quantidade <= 0:
-                    print('O valor não pode ser negativo ou igual a zero!') 
+                if remov_quantidade > self.quantidade:
+                    print(f'\nNão foi possivel realizar a operação!\nQuantidade informada ({remov_quantidade}) é maior que a quantidade em estoque ({self.quantidade})')
+                elif remov_quantidade <= 0:
+                    print('\nO valor não pode ser negativo ou igual a zero!') 
                 else:
                     self.quantidade = self.quantidade - remov_quantidade
-                    print(f'Nome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade}')
-                    input()
+                    print(f'\nNome do Produto: {self.nome}\nQtd. Estoque Atualizada: {self.quantidade}')
             except:
-                print('A quantidade informada é invalida!')
-                input() 
+                print('\nA quantidade informada é invalida!')
         else:
             print('O estoque atual é negativo ou igual a zero, verificar!')
             print(f'Produto: {self.nome} | Estoque Atual: {self.quantidade}')
-            input()
 
     def atualizar_preco(self):
-        os.system('cls')
+        # os.system('cls')
         print('ATUALIZAÇÃO DE PREÇO\n')
         try:
             print(f'Preço Atual: R${self.preco:.2f}')
             novo_preco = float(input(f'Novo Preço: '))
             self.preco = novo_preco
-            print(f'Nome do Produto: {self.nome}\nPreço Atualizado: R${self.preco:.2f}')
-            input()
+            print(f'\nNome do Produto: {self.nome}\nPreço Atualizado: R${self.preco:.2f}')
         except:
-            input('TESTE ERROR!')
+            print('Não foi possivel alterar o preço, verifique a quantidade informada!')
 
     def mostrar_informacoes(self):
         print(f'''
