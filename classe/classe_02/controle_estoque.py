@@ -1,18 +1,26 @@
 import os
-from dataclasses import dataclass
 
 os.system('cls')
-
-@dataclass
 class Produto:
-    # Definindo com "dataclass" o tipo de cada atributo da classe
-    nome: str
-    preco: float
-    quantidade: int
-    
-    def adicionar_estoque(self):
+    produtos = []
+
+    def __init__(self, nome: str, preco: float, quantidade: int):
+        self.nome = nome
+        self.preco = preco
+        self.quantidade = quantidade
+
+    def adicionar_estoque(self,item):
+        if isinstance(item,Produto):
+            self.produtos.append(item)
+
+    def adicionar_qtd(self):
         # os.system('cls')
-        print('ATUALIZAR QUANTIDADE EM ESTOQUE\n')
+        print('*'*50)
+        print('ATUALIZAR QUANTIDADE EM ESTOQUE')
+        print(f'''
+            Nome do Produto: {self.nome}
+            Qtd. em Estoque: {self.quantidade}    
+''')
         try:
             add_quantidade = int(input('Quantidade para adicionar ao estoque: '))
             if add_quantidade <= 0:
@@ -28,6 +36,7 @@ class Produto:
 
     def remover_estoque(self):
         # os.system('cls')
+        print('*'*50)
         print('REMOVER DO ESTOQUE')
         if self.quantidade >= 1:
             try:
@@ -48,7 +57,8 @@ class Produto:
 
     def atualizar_preco(self):
         # os.system('cls')
-        print('ATUALIZAÇÃO DE PREÇO\n')
+        print('*'*50)
+        print('ATUALIZAÇÃO DE PREÇO')
         try:
             print(f'Preço Atual: R${self.preco:.2f}')
             novo_preco = float(input(f'Novo Preço: '))
@@ -57,39 +67,31 @@ class Produto:
         except:
             print('Não foi possivel alterar o preço, verifique a quantidade informada!')
 
-    def mostrar_informacoes(self):
-        print(f'''
+    def exibe_produtos(self):
+        print('Nosso Catalogo')
+
+        for i, item in enumerate(self.produtos):
+            print(f'Nome do Produto: {item.nome} | Qtd. Estoque: {item.quantidade} | Preço: {item.preco}')
+
+
+    def __str__(self):
+        return (f'''
             INFORMAÇÕES DO PRODUTO\n
         Nome do Produto: {self.nome}
         Preço: {self.preco:.2f}
         Quantidade em Estoque: {self.quantidade}
         ''')
-    
 
-# produto1 = Produto('Camisa do Bayern',250,50)
-# produto1.adicionar_estoque()
-# produto1.remover_estoque()
-# produto1.atualizar_preco()
-# produto1.mostrar_informacoes()
-
-# produto2 = Produto('Camisa do Barcelona',280,150)
-# produto2.adicionar_estoque()
-# produto2.remover_estoque()
-# produto2.atualizar_preco()
-# produto2.mostrar_informacoes()
-
-# produto3 = Produto('Camisa do Real Madrid',270,100)
-# produto3.adicionar_estoque()
-# produto3.remover_estoque()
-# produto3.atualizar_preco()
-# produto3.mostrar_informacoes()
-
-produto4 = Produto('Camisa Teste Estoque Insuficiente',180,0)
-produto4.adicionar_estoque()
-produto4.remover_estoque()
-produto4.atualizar_preco()
-produto4.mostrar_informacoes()
+p1 = Produto('Camisa do Bayern',250,50)
+p2 = Produto('Camisa do Barcelona',280,150)
+p3 = Produto('Camisa do Real Madrid',270,100)
+p4 = Produto('Camisa Teste Estoque Insuficiente',180,0)
 
 
+p1.adicionar_estoque(p1)
+p2.adicionar_estoque(p2)
+p3.adicionar_estoque(p3)
+p4.adicionar_estoque(p4)
 
+p1.exibe_produtos()
 
