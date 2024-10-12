@@ -41,7 +41,7 @@ class Produto:
         self.preco = preco
         self.quantidade = quantidade
 
-    def adicionar_estoque(self, quantidade):
+    def adicionar_estoque(self, quantidade): 
         ''' Adiciona uma quantidade fornecida pelo usuario ao estoque'''
         if quantidade <= 0:
             raise ValueError('Valor inválido, a quantidade não pode ser menor ou igual a 0!') 
