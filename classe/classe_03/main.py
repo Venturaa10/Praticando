@@ -1,27 +1,34 @@
 import random
 from biblioteca import Biblioteca
 from livro import Livro
+from cliente import Cliente
 
-
+    
+teste_cliente = Cliente('João victor', '18159292783')
+# print(Biblioteca.adiciona_cliente_ao_sistema(teste_cliente))
+print(teste_cliente.info_cliente())
 
 livro1 = Livro('Sherlock holmes', 'Sherlock', 2000)
+
 print(livro1.emprestar())
-# print(livro1.informacoes())
+print(livro1.info_livro())
 print(livro1.emprestar())
-print(livro1.devolver())
-# print(livro1.informacoes())
+print(livro1.info_livro())
 print()
 
 livro2 = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
 print(livro2.devolver())
 print(livro2.emprestar())
-# print(livro2.informacoes())
+print(livro2.info_livro())
 
-# print('TESTE DATA')
-# print(livro1.data_emprestimo_formatada)
-# print(livro2.data_emprestimo_formatada)
+print(Biblioteca.adiciona_livro_na_biblioteca(livro1))
+print(Biblioteca.adiciona_livro_na_biblioteca(livro2))
+
+print('TESTE DATA')
+print(livro1.data_emprestimo_formatado)
+print(livro2.data_emprestimo_formatado)
 
 print('TESTE')
-Biblioteca.exibe_biblioteca() # Exibe todos os livros da biblioteca
+print(Biblioteca.exibe_biblioteca()) # Exibe todos os livros da biblioteca
 
 

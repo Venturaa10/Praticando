@@ -36,5 +36,5 @@ class Cliente(Biblioteca):
     def __str__(self):
         return f'Cliente: {self.nome_cliente_formatado} | CPF: {self.cpf_cliente_formatado}'
     
-teste = Cliente('João victor', '18159292783')
-print(teste)
+# teste = Cliente('João victor', '18159292783')
+# print(teste)

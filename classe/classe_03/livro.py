@@ -2,8 +2,7 @@ import random
 from biblioteca import Biblioteca
 
 class Livro(Biblioteca):
-    def __init__(self, titulo, autor, ano_publicacao):        
-        
+    def __init__(self, titulo, autor, ano_publicacao):      
             # if not -> Se não existir valor ou condição for falsa
         if not isinstance(titulo, str) or not titulo.strip():
             raise ValueError('Titulo Invalido!')
@@ -17,10 +16,10 @@ class Livro(Biblioteca):
         else:
             pass
         
-        self.codigo_livro = random.randint(10000, 100000)
         self.titulo = titulo
         self.autor = autor
         self.ano_publicacao = ano_publicacao
+        self.disponivel = None
 
     @property
     def titulo_formatado(self):
@@ -30,10 +29,10 @@ class Livro(Biblioteca):
     def autor_formatado(self):
         return self.autor.title()
     
+    
     def __str__(self):
-        return f'Código do Livro: {self.codigo_livro} | Autor: {self.autor_formatado} | Titulo: {self.titulo_formatado} | Ano: {self.ano_publicacao}'
+        return f'Autor: {self.autor_formatado} | Titulo: {self.titulo_formatado} | Ano: {self.ano_publicacao}'
 
 
-
-teste_livro = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
-print(teste_livro)
+# teste_livro = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
+# print(teste_livro)
