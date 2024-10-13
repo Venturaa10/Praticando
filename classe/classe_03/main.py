@@ -1,6 +1,10 @@
-from biblioteca import Livro
+import random
+from biblioteca import Biblioteca
+from livro import Livro
 
-livro1 = Livro('Sherlock Holmes', 'Sherlock', 2000)
+
+
+livro1 = Livro('Sherlock holmes', 'Sherlock', 2000)
 print(livro1.emprestar())
 # print(livro1.informacoes())
 print(livro1.emprestar())
@@ -8,7 +12,7 @@ print(livro1.devolver())
 # print(livro1.informacoes())
 print()
 
-livro2 = Livro('Bobos e Bocos', 'Alisson', 2010)
+livro2 = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
 print(livro2.devolver())
 print(livro2.emprestar())
 # print(livro2.informacoes())
@@ -18,6 +22,6 @@ print(livro2.emprestar())
 # print(livro2.data_emprestimo_formatada)
 
 print('TESTE')
-Livro.exibe_biblioteca() # Exibe todos os livros da biblioteca
+Biblioteca.exibe_biblioteca() # Exibe todos os livros da biblioteca
 
 
