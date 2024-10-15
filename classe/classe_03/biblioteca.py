@@ -15,9 +15,15 @@ class Biblioteca:
         if self.disponivel:
             self.data_emprestimo = datetime.today()
             return 'O livro está disponivel!'
-        else:
+        elif self.disponivel == False:
             return self.data_emprestimo.strftime('%d/%m/%Y')
-    
+        else: 
+            return f'O livro "{self.titulo_formatado}" ainda não está no sistema da biblioteca'
+
+    @property 
+    def disponivel_formatado(self):
+        return 'Disponivel :)' if self.disponivel == True else 'Não Disponivel :('
+
     def emprestar(self):
         ''' Verifica e realiza a operação de emprestimo de um livro'''
         if self.disponivel:
@@ -45,8 +51,7 @@ class Biblioteca:
 
     def info_livro(self):
         ''' Exibe as informações do livro'''
-        disponibilidade = 'Disponivel :)' if self.disponivel == True else 'Não Disponivel :('
-        return f'Titulo: {self.titulo_formatado} | Autor: {self.autor_formatado} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {disponibilidade}'
+        return f'Titulo: {self.titulo_formatado} | Autor: {self.autor_formatado} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel_formatado}'
     
     def info_cliente(self):
         return f'Cliente: {self.nome_cliente_formatado} | CPF: {self.cpf_cliente_formatado}'
@@ -62,12 +67,11 @@ class Biblioteca:
         self.disponivel = True
         Biblioteca.livros[self.titulo] = {
             'codigo': self.codigo_livro,
-            'titulo': self.titulo,
-            'autor': self.autor,
-            'disponivel': self.disponivel
+            'titulo': self.titulo_formatado,
+            'autor': self.autor_formatado,
+            'disponivel': self.disponivel_formatado
         }
-    
-        return f'Livro: {self.titulo} | Código do Livro: {self.codigo_livro} -> Adicionando à biblioteca'
+        return f'Livro: {self.titulo_formatado} | Código do Livro: {self.codigo_livro} -> Adicionando à biblioteca'
 
     @classmethod
     def adiciona_cliente_ao_sistema(cls, cliente):
@@ -78,18 +82,14 @@ class Biblioteca:
     @classmethod # Metodo estatico, permite acessar os atributos da classe sem precisar instanciá-la.
     def exibe_biblioteca(cls):
         ''' Retorna as informações de todos os livros da biblioteca '''
+        livros_formatados = []
         if not cls.livros:
             return 'A biblioteca está vazia :('
-        
-        for codigo, info in cls.livros.items():
-            disponibilidade = 'Disponível' if info['disponivel'] else 'Não Disponível'
-            return f"Código: {codigo} | Título: {info['titulo']} | Autor: {info['autor']} | Disponibilidade: {disponibilidade}"
 
-    # @classmethod 
-    # def lista_clientes(cls, cliente):
-    #     ''' Retorna as informações de todos os clientes do sistema '''
-    #     if cls.cliente not in cls.clientes:
-    #         raise ValueError(f'O cliente não esta cadastrado no sistema!')
-    #     else:
-    #         for cliente in cls.clientes:
-    #             print(cliente.info_cliente())
+        for livro, info in cls.livros.items():
+            '''Pega os pares de chave e valor do dicionário cls.livros (onde a chave é o identificador do livro e o valor é outro dicionário contendo informações sobre o livro), e adiciona uma string formatada com os detalhes do livro na lista livros_formatados.'''
+            livros_formatados.append(f"Código: {info['codigo']} | Título: {info['titulo']} | Autor: {info['autor']} | Disponibilidade: {info['disponivel']}")
+
+        return '\n'.join(livros_formatados) # Une os itens da lista, porém o \n faz com que seja exibido um abaixo do outro.
+
+
