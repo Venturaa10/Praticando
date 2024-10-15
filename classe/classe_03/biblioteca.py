@@ -60,13 +60,13 @@ class Biblioteca:
         ''' Tenho que adicionar corretamente as informações do livro no dicionario livro '''
         self.codigo_livro = self.gerar_codigo()
         self.disponivel = True
-        self.livros = {
+        Biblioteca.livros[self.titulo] = {
             'codigo': self.codigo_livro,
             'titulo': self.titulo,
             'autor': self.autor,
             'disponivel': self.disponivel
         }
-
+    
         return f'Livro: {self.titulo} | Código do Livro: {self.codigo_livro} -> Adicionando à biblioteca'
 
     @classmethod

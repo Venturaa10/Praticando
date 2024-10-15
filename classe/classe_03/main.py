@@ -6,20 +6,20 @@ from cliente import Cliente
     
 teste_cliente = Cliente('João victor', '18159292783')
 # print(Biblioteca.adiciona_cliente_ao_sistema(teste_cliente))
-print(teste_cliente.info_cliente())
+# print(teste_cliente.info_cliente())
 
 livro1 = Livro('Sherlock holmes', 'Sherlock', 2000)
 
-print(livro1.emprestar())
-print(livro1.info_livro())
-print(livro1.emprestar())
-print(livro1.info_livro())
-print()
+# print(livro1.emprestar())
+# print(livro1.info_livro())
+# print(livro1.emprestar())
+# print(livro1.info_livro())
+# print()
 
 livro2 = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
-print(livro2.devolver())
-print(livro2.emprestar())
-print(livro2.info_livro())
+# print(livro2.devolver())
+# print(livro2.emprestar())
+# print(livro2.info_livro())
 
 print(Biblioteca.adiciona_livro_na_biblioteca(livro1))
 print(Biblioteca.adiciona_livro_na_biblioteca(livro2))
