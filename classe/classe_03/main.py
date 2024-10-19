@@ -1,36 +1,60 @@
 import random
+import os
 from biblioteca import Biblioteca
 from livro import Livro
 from cliente import Cliente
 
-    
-teste_cliente = Cliente('João victor', '18159292783')
-print(Biblioteca.adiciona_cliente_ao_sistema(teste_cliente))
-teste_cliente2 = Cliente('Vincius', '123.456.789-09')
-print(Biblioteca.adiciona_cliente_ao_sistema(teste_cliente2))
-print(Biblioteca.exibe_clientes())
+def limpa_terminal():
+    os.system('cls')
 
-livro1 = Livro('Sherlock holmes', 'Sherlock', 2000)
+def menu_principal():
+    print('''
+            SISTEMA BIBLIOTECA\n
+            1 - Cadastrar Livro
+            2 - Cadastrar Cliente
+            3 - Exibir Biblioteca
+            4 - Exibir CLientes
+            0 - Sair
+                ''')
+    try:
+        seleciona_opcao = int(input('Número da Opção: '))
+    except: 
+        limpa_terminal()
+        print('Opção Inválida, informe uma das opções exibidas abaixo!')
+        return menu_principal()
 
-# # print(livro1.emprestar())
-# # print(livro1.info_livro())
-# # print(livro1.emprestar())
-# # print(livro1.info_livro())
-# # print()
+    if seleciona_opcao == 1:
+        cadastrar_livro()
+    elif seleciona_opcao == 2:
+        cadastrar_cliente()
+    elif seleciona_opcao == 3:
+        exibir_biblioteca()
+    elif seleciona_opcao == 4:
+        exibir_clientes()
+    elif seleciona_opcao == 0:
+        sair()
+    else:
+        limpa_terminal()
+        print('Opção Inválida!')
+        return menu_principal()
 
-livro2 = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
-# print(livro2.devolver())
-# # print(livro2.emprestar())
-# # print(livro2.info_livro())
+def cadastrar_livro():
+    print('CADASTRO DE CLIENTE')
 
-print(Biblioteca.adiciona_livro_na_biblioteca(livro1))
-print(Biblioteca.adiciona_livro_na_biblioteca(livro2))
+def cadastrar_cliente():
+    print('Cadastro de Cliente')
 
-# print('TESTE DATA')
-# print(livro1.data_emprestimo_formatado)
-# print(livro2.data_emprestimo_formatado)
+def exibir_biblioteca():
+    print('Exibe Biblioteca')
 
-print('TESTE')
-print(Biblioteca.exibe_biblioteca()) # Exibe todos os livros da biblioteca
+def exibir_clientes():
+    print('Exibe Clientes')
 
+def sair():
+    print('Obrigado pela visita :)')
 
+def main():
+    menu_principal()
+
+if __name__ == '__main__':
+    main()

@@ -2,7 +2,7 @@ import random
 from biblioteca import Biblioteca
 
 class Livro(Biblioteca):
-    def __init__(self, titulo, autor, ano_publicacao):      
+    def __init__(self, titulo: str, autor: str, ano_publicacao: int):      
             # if not -> Se não existir valor ou condição for falsa
         if not isinstance(titulo, str) or not titulo.strip():
             raise ValueError('Titulo Invalido!')
