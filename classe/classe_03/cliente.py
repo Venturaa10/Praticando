@@ -1,17 +1,17 @@
 from validate_docbr import CPF
 from biblioteca import Biblioteca
+import re
 
 class Cliente(Biblioteca):
-    def __init__(self, nome_cliente, cpf_cliente):
-        
+    def __init__(self, nome_cliente: str, cpf_cliente:str):
+        limpa_cpf = re.sub(r'[^a-zA-Z0-9]', '', cpf_cliente) # Remove todos os simbolos e espaços em brancos
+        cpf_cliente = limpa_cpf 
+
         if not len(cpf_cliente) == 11:
             raise ValueError('CPF não está conforme esperado, verificar!')
         
         elif not isinstance(nome_cliente, str):
             raise ValueError('Nome do cliente invalido!')
-        
-        else:
-            pass
 
         self.nome_cliente = nome_cliente
         self.cpf_cliente = self.valida(cpf_cliente)
@@ -36,5 +36,3 @@ class Cliente(Biblioteca):
     def __str__(self):
         return f'Cliente: {self.nome_cliente_formatado} | CPF: {self.cpf_cliente_formatado}'
     
-# teste = Cliente('João victor', '18159292783')
-# print(teste)

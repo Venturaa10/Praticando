@@ -54,6 +54,7 @@ class Biblioteca:
         return f'Titulo: {self.titulo_formatado} | Autor: {self.autor_formatado} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel_formatado}'
     
     def info_cliente(self):
+        ''' Exibe as informações do cliente'''
         return f'Cliente: {self.nome_cliente_formatado} | CPF: {self.cpf_cliente_formatado}'
 
     @staticmethod
@@ -65,7 +66,7 @@ class Biblioteca:
         ''' Tenho que adicionar corretamente as informações do livro no dicionario livro '''
         self.codigo_livro = self.gerar_codigo()
         self.disponivel = True
-        Biblioteca.livros[self.titulo] = {
+        Biblioteca.livros[self.codigo_livro] = { # Adicionando o livro no dicionario de "livros"
             'codigo': self.codigo_livro,
             'titulo': self.titulo_formatado,
             'autor': self.autor_formatado,
@@ -73,23 +74,36 @@ class Biblioteca:
         }
         return f'Livro: {self.titulo_formatado} | Código do Livro: {self.codigo_livro} -> Adicionando à biblioteca'
 
-    @classmethod
-    def adiciona_cliente_ao_sistema(cls, cliente):
-        cls.clientes.append(cliente)
-        return f'Nome do Cliente: {cliente.nome_cliente} | CPF: {cliente.cpf_cliente} -> Cadastrado no sistema'
+    def adiciona_cliente_ao_sistema(self):
+        # cls.clientes.append(cliente)
+        Biblioteca.clientes[self.cpf_cliente] = {
+            'nome': self.nome_cliente,
+            'cpf': self.cpf_cliente
+        }
+        return f'Nome do Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente} -> Cadastrado no sistema'
 
 
     @classmethod # Metodo estatico, permite acessar os atributos da classe sem precisar instanciá-la.
     def exibe_biblioteca(cls):
         ''' Retorna as informações de todos os livros da biblioteca '''
-        livros_formatados = []
+        livros_lista = []
         if not cls.livros:
             return 'A biblioteca está vazia :('
 
         for livro, info in cls.livros.items():
             '''Pega os pares de chave e valor do dicionário cls.livros (onde a chave é o identificador do livro e o valor é outro dicionário contendo informações sobre o livro), e adiciona uma string formatada com os detalhes do livro na lista livros_formatados.'''
-            livros_formatados.append(f"Código: {info['codigo']} | Título: {info['titulo']} | Autor: {info['autor']} | Disponibilidade: {info['disponivel']}")
+            livros_lista.append(f"Código: {info['codigo']} | Título: {info['titulo']} | Autor: {info['autor']} | Disponibilidade: {info['disponivel']}")
 
-        return '\n'.join(livros_formatados) # Une os itens da lista, porém o \n faz com que seja exibido um abaixo do outro.
+        return '\n'.join(livros_lista) # Une os itens da lista, porém o \n faz com que seja exibido um abaixo do outro.
 
+    @classmethod
+    def exibe_clientes(cls):
+        clientes_lista = []
+        if not cls.clientes:
+            return 'Nenhum cliente encontrado no sistema!'
 
+        for cliente, info in cls.clientes.items():
+            clientes_lista.append(f"CPF: {info['cpf']} | Nome Completo: {info['nome']}")
+
+        return '\n'.join(clientes_lista) # Une os itens da lista, porém o \n faz com que seja exibido um abaixo do outro.
+    

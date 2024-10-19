@@ -33,6 +33,3 @@ class Livro(Biblioteca):
     def __str__(self):
         return f'Autor: {self.autor_formatado} | Titulo: {self.titulo_formatado} | Ano: {self.ano_publicacao}'
 
-
-# teste_livro = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
-# print(teste_livro)
