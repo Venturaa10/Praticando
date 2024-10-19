@@ -9,73 +9,70 @@ class Biblioteca:
     livros = {}
     clientes = {}
 
-    @property
-    def data_emprestimo_formatado(self):
-        ''' Formata a data para o padrão do Brasil '''
-        if self.disponivel:
-            self.data_emprestimo = datetime.today()
-            return 'O livro está disponivel!'
-        elif self.disponivel == False:
-            return self.data_emprestimo.strftime('%d/%m/%Y')
-        else: 
-            return f'O livro "{self.titulo_formatado}" ainda não está no sistema da biblioteca'
 
-    @property 
-    def disponivel_formatado(self):
-        return 'Disponivel :)' if self.disponivel == True else 'Não Disponivel :('
 
     def emprestar(self):
         ''' Verifica e realiza a operação de emprestimo de um livro'''
-        if self.disponivel:
-            self.disponivel = False
-            self.data_emprestimo = datetime.today()
-            return f'Livro "{self.titulo_formatado}" emprestado no dia {self.data_emprestimo_formatado}, tenha uma otima leitura :)'
+        if self._disponivel:
+            self._disponivel = False
+            self._data_emprestimo = datetime.today()
+            return f'Livro "{self.titulo}" emprestado no dia {self.data_emprestimo}, tenha uma otima leitura :)'
         else:
-            return f'O livro "{self.titulo_formatado}" não está disponivel!'
+            return f'O livro "{self.titulo}" não está disponivel!'
 
     def devolver(self):
         ''' Realiza a devolução do livro, se o livro estiver realmente emprestado '''
-        if self.disponivel:
+        if self._disponivel:
             return f'Não é possivel fazer a devolução, o livro não foi emprestado!'
         else:    
-            self.disponivel = True
-            return f'Livro "{self.titulo_formatado}" devolvido a biblioteca!'        
+            self._disponivel = True
+            return f'Livro "{self.titulo}" devolvido a biblioteca!'        
 
     def verifica_data(self):
         ''' Verifica a data de devolução do livro '''
-        if self.disponivel:
+        if self._disponivel:
             return f'O livro não está emprestado!'
         else:
-            data = self.data_emprestimo + timedelta(days=7)
-            return f'Data do Emprestimo: {self.data_emprestimo_formatado} | Data de Devolução: {data}'
+            data = self._data_emprestimo + timedelta(days=7)
+            return f'Data do Emprestimo: {self.data_emprestimo} | Data de Devolução: {data}'
+
+    def verifica_data_emprestimo(self):
+        # Verificar Metodo
+        if self._disponivel != None:
+            self._data_emprestimo = datetime.today()
+            return 'O livro está disponivel!'
+        
+        elif self._disponivel:
+            return self._data_emprestimo.strftime('%d/%m/%Y')
+        
+        else: 
+            return f'O livro "{self.titulo}" ainda não está no sistema da biblioteca'
 
     def info_livro(self):
         ''' Exibe as informações do livro'''
-        return f'Titulo: {self.titulo_formatado} | Autor: {self.autor_formatado} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel_formatado}'
+        return f'Código do Livro: {self.codigo_livro} | Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel}'
     
     def info_cliente(self):
         ''' Exibe as informações do cliente'''
-        return f'Cliente: {self.nome_cliente_formatado} | CPF: {self.cpf_cliente_formatado}'
+        return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
 
-    @staticmethod
-    def gerar_codigo():
+    def gerar_codigo(self):
         ''' Gera o codigo do livro '''
         return random.randint(10000, 100000)
 
     def adiciona_livro_na_biblioteca(self):
         ''' Tenho que adicionar corretamente as informações do livro no dicionario livro '''
-        self.codigo_livro = self.gerar_codigo()
-        self.disponivel = True
-        Biblioteca.livros[self.codigo_livro] = { # Adicionando o livro no dicionario de "livros"
+        self._codigo_livro = self.gerar_codigo()
+        self._disponivel = True
+        Biblioteca.livros[self._codigo_livro] = { # Adicionando o livro no dicionario de "livros"
             'codigo': self.codigo_livro,
-            'titulo': self.titulo_formatado,
-            'autor': self.autor_formatado,
-            'disponivel': self.disponivel_formatado
+            'titulo': self.titulo,
+            'autor': self.autor,
+            'disponivel': self.disponivel
         }
-        return f'Livro: {self.titulo_formatado} | Código do Livro: {self.codigo_livro} -> Adicionando à biblioteca'
+        return f'Livro: {self.titulo} | Código do Livro: {self.codigo_livro} -> Adicionando à biblioteca'
 
     def adiciona_cliente_ao_sistema(self):
-        # cls.clientes.append(cliente)
         Biblioteca.clientes[self.cpf_cliente] = {
             'nome': self.nome_cliente,
             'cpf': self.cpf_cliente
@@ -91,7 +88,7 @@ class Biblioteca:
             return 'A biblioteca está vazia :('
 
         for livro, info in cls.livros.items():
-            '''Pega os pares de chave e valor do dicionário cls.livros (onde a chave é o identificador do livro e o valor é outro dicionário contendo informações sobre o livro), e adiciona uma string formatada com os detalhes do livro na lista livros_formatados.'''
+            '''Pega os pares de chave e valor do dicionário cls.livros (onde a chave é o identificador do livro e o valor é outro dicionário contendo informações sobre o livro), e adiciona uma string formatada com os detalhes do livro na lista "livros_lista".'''
             livros_lista.append(f"Código: {info['codigo']} | Título: {info['titulo']} | Autor: {info['autor']} | Disponibilidade: {info['disponivel']}")
 
         return '\n'.join(livros_lista) # Une os itens da lista, porém o \n faz com que seja exibido um abaixo do outro.

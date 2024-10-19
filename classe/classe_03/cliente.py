@@ -13,17 +13,17 @@ class Cliente(Biblioteca):
         elif not isinstance(nome_cliente, str):
             raise ValueError('Nome do cliente invalido!')
 
-        self.nome_cliente = nome_cliente
-        self.cpf_cliente = self.valida(cpf_cliente)
+        self._nome_cliente = nome_cliente
+        self._cpf_cliente = self.valida(cpf_cliente)
 
     @property
-    def nome_cliente_formatado(self):
-        return self.nome_cliente.title()
+    def nome_cliente(self):
+        return self._nome_cliente.title()
 
     @property
-    def cpf_cliente_formatado(self):
+    def cpf_cliente(self):
         mascara = CPF()
-        return mascara.mask(self.cpf_cliente)
+        return mascara.mask(self._cpf_cliente)
 
     def valida(self, cpf):
         validador = CPF()
@@ -34,5 +34,5 @@ class Cliente(Biblioteca):
             raise ValueError("cpf inválido!")
 
     def __str__(self):
-        return f'Cliente: {self.nome_cliente_formatado} | CPF: {self.cpf_cliente_formatado}'
+        return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
     
