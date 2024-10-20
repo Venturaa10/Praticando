@@ -11,22 +11,28 @@ from cliente import Cliente
 # print(Biblioteca.exibe_clientes())
 
 livro1 = Livro('Sherlock holmes', 'Sherlock', 2000)
-print(livro1.emprestar())
-print(livro1.info_livro())
+# print(livro1.emprestar()) # Funcionando conforme esperado
+# print(livro1.info_livro()) # Funcionando conforme esperado
 print()
 
 livro2 = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
-print(livro2.emprestar())
+# print(livro2.verifica_data_emprestimo())
+# print(livro2.verifica_data_devolucao())
 
 # print(Biblioteca.adiciona_livro_na_biblioteca(livro1)) 
-# print(Biblioteca.adiciona_livro_na_biblioteca(livro2))
-print(livro2.info_livro())
+print(Biblioteca.adiciona_livro_na_biblioteca(livro2))
+print(livro2.verifica_data_devolucao())
+# print(livro2.devolver()) # Funcionando conforme esperado
+print(livro2.emprestar()) # Funcionando conforme esperado
+print(livro2.verifica_data_devolucao())
+print(livro2.info_livro()) # Funcionando conforme esperado
+# print(livro2.info_livro())
 
 print('TESTE DATA') # Verificar
-print(livro1.verifica_data_emprestimo())
+# print(livro1.verifica_data_emprestimo())
 print(livro2.verifica_data_emprestimo())
 
 print('TESTE') # Aqui esta OK
-print(Biblioteca.exibe_biblioteca()) # Exibe todos os livros da biblioteca
+# print(Biblioteca.exibe_biblioteca()) # Exibe todos os livros da biblioteca
 
 

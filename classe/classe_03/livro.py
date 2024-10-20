@@ -20,9 +20,9 @@ class Livro(Biblioteca):
         self._titulo = titulo
         self._autor = autor
         self._ano_publicacao = ano_publicacao
-        self._disponivel = None
+        self._disponivel = False
         self._codigo_livro = None
-        self._data_emprestimo = None
+        self._data_emprestimo = False
 
     @property
     def titulo(self):
@@ -47,7 +47,8 @@ class Livro(Biblioteca):
     @property
     def data_emprestimo(self):
         ''' Formata a data para o padrão do Brasil '''
-        return 'Sem data definida no momento!' if self._data_emprestimo == None else self._data_emprestimo.strftime('%d/%m/%Y')
+        
+        return 'O livro não esta emprestado!' if self._data_emprestimo == False else self._data_emprestimo.strftime('%d/%m/%Y')
     
     def __str__(self):
         return f'Autor: {self.autor} | Titulo: {self.titulo} | Ano: {self.ano_publicacao}'
