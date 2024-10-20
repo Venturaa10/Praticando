@@ -9,8 +9,17 @@ class Biblioteca:
     livros = {}
     clientes = {}
 
+    @property
+    def data_devolucao(self):
+        if not self.verifica_livro_cadastro():
+            if self._disponivel:
+                return self.disponivel
+            else:
+                data_devolucao = self._data_emprestimo + timedelta(days=7)
+                return data_devolucao.strftime('%d/%m/%Y') 
+
     def verifica_livro_cadastro(self):        
-        if self._codigo_livro == None:
+        if self._codigo_livro == False:
             raise ValueError('O livro ainda não foi cadastrado no sistema!')
 
     def emprestar(self):
@@ -21,27 +30,25 @@ class Biblioteca:
                 self._data_emprestimo = datetime.today()
                 return f'Livro "{self.titulo}" emprestado no dia {self.data_emprestimo}, tenha uma otima leitura :)'
             else:
-                return f'O livro "{self.titulo}" não está disponivel!'
+                return self.disponivel
 
     def devolver(self):
         ''' Realiza a devolução do livro, se o livro estiver realmente emprestado '''
         if not self.verifica_livro_cadastro():
             if self._disponivel:
-                return f'Não é possivel fazer a devolução, o livro não foi emprestado!'
+                return self.disponivel
             else:    
                 self._disponivel = True
                 return f'Livro "{self.titulo}" devolvido a biblioteca!'        
-            
 
     def verifica_data_devolucao(self):
         ''' Verifica a data de devolução do livro '''
         if not self.verifica_livro_cadastro():
             if self._disponivel:
-                return f'O livro não está emprestado!'
+                return self.disponivel
             else:
-                data_devolucao = self._data_emprestimo + timedelta(days=7)
-                self._data_emprestimo = datetime.today().strftime('%d/%m/%Y')
-                return f'Data do Emprestimo: {self._data_emprestimo} | Data de Devolução: {data_devolucao.strftime('%d/%m/%Y')}'
+                return f'Data do Emprestimo: {self.data_emprestimo} | Data de Devolução: {self.data_devolucao}'
+            
 
     def verifica_data_emprestimo(self):
         # Verificar Metodo
@@ -56,9 +63,12 @@ class Biblioteca:
     def info_livro(self):
         ''' Exibe as informações do livro'''
         if not self.verifica_livro_cadastro():
-            return f'Código do Livro: {self.codigo_livro} | Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel}'
+            if self._disponivel:
+                return f'Código do Livro: {self.codigo_livro} | Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel}'
+            else:
+                return f'Código do Livro: {self.codigo_livro} | Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel} | Data de Devolução: {self.data_devolucao}'
+
         
-    
     def info_cliente(self):
         ''' Exibe as informações do cliente'''
         return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
