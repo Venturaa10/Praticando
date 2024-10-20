@@ -8,10 +8,10 @@ class Livro(Biblioteca):
         if not isinstance(titulo, str) or not titulo.strip():
             raise ValueError('Titulo Invalido!')
         
-        elif not isinstance(autor, str) or not autor.strip():
+        if not isinstance(autor, str) or not autor.strip():
             raise ValueError('Nome do autor invalido!')
         
-        elif not isinstance(ano_publicacao, int):
+        if not isinstance(ano_publicacao, int):
             raise ValueError('Ano Invalido!')
         
         self._titulo = titulo

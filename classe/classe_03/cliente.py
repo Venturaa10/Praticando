@@ -10,7 +10,7 @@ class Cliente(Biblioteca):
         if not len(cpf_cliente) == 11:
             raise ValueError('CPF não está conforme esperado, verificar!')
         
-        elif not isinstance(nome_cliente, str):
+        if not isinstance(nome_cliente, str):
             raise ValueError('Nome do cliente invalido!')
 
         self._nome_cliente = nome_cliente
