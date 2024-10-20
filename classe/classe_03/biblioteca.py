@@ -13,12 +13,20 @@ class Biblioteca:
     def data_devolucao(self):
         if not self.verifica_livro_cadastro():
             if self._disponivel:
-                return self.disponivel
+                return self.mensagem_livro_disponibilidade()
             else:
                 data_devolucao = self._data_emprestimo + timedelta(days=7)
                 return data_devolucao.strftime('%d/%m/%Y') 
 
-    def verifica_livro_cadastro(self):        
+    def mensagem_livro_disponibilidade(self):
+        ''' Responsavel por exibir uma mensagem sobre a disponibilidade do livro '''
+        if self._disponivel:
+            return f'O livro "{self.titulo}" está disponivel!'
+        else:
+            return f'O livro "{self.titulo}" não está disponivel!'
+            
+    def verifica_livro_cadastro(self):
+        ''' Verifica se o atributo _codigo_livro é False, isso indica que o livro não foi cadastrado no sistema '''        
         if self._codigo_livro == False:
             raise ValueError('O livro ainda não foi cadastrado no sistema!')
 
@@ -30,13 +38,13 @@ class Biblioteca:
                 self._data_emprestimo = datetime.today()
                 return f'Livro "{self.titulo}" emprestado no dia {self.data_emprestimo}, tenha uma otima leitura :)'
             else:
-                return self.disponivel
+                return self.mensagem_livro_disponibilidade()
 
     def devolver(self):
         ''' Realiza a devolução do livro, se o livro estiver realmente emprestado '''
         if not self.verifica_livro_cadastro():
             if self._disponivel:
-                return self.disponivel
+                return self.mensagem_livro_disponibilidade()
             else:    
                 self._disponivel = True
                 return f'Livro "{self.titulo}" devolvido a biblioteca!'        
@@ -45,7 +53,7 @@ class Biblioteca:
         ''' Verifica a data de devolução do livro '''
         if not self.verifica_livro_cadastro():
             if self._disponivel:
-                return self.disponivel
+                return self.mensagem_livro_disponibilidade()
             else:
                 return f'Data do Emprestimo: {self.data_emprestimo} | Data de Devolução: {self.data_devolucao}'
             
@@ -54,7 +62,7 @@ class Biblioteca:
         # Verificar Metodo
         if not self.verifica_livro_cadastro():
             if self._disponivel:
-                return f'O livro está disponivel!'
+                return self.mensagem_livro_disponibilidade()
             else:
                 self._data_emprestimo = datetime.today().strftime('%d/%m/%Y')
                 return f'Data emprestimo:{self._data_emprestimo}'
@@ -73,6 +81,7 @@ class Biblioteca:
         ''' Exibe as informações do cliente'''
         return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
 
+
     def gerar_codigo(self):
         ''' Gera o codigo do livro '''
         return random.randint(10000, 100000)
@@ -90,6 +99,7 @@ class Biblioteca:
         return f'Livro: {self.titulo} | Código do Livro: {self.codigo_livro} -> Adicionando à biblioteca'
 
     def adiciona_cliente_ao_sistema(self):
+        ''' Adiciona o cliente ao dicionario "clientes" '''
         Biblioteca.clientes[self.cpf_cliente] = {
             'nome': self.nome_cliente,
             'cpf': self.cpf_cliente
