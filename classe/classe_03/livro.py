@@ -13,9 +13,6 @@ class Livro(Biblioteca):
         
         elif not isinstance(ano_publicacao, int):
             raise ValueError('Ano Invalido!')
-
-        else:
-            pass
         
         self._titulo = titulo
         self._autor = autor
@@ -23,6 +20,10 @@ class Livro(Biblioteca):
         self._disponivel = False
         self._codigo_livro = False
         self._data_emprestimo = False
+
+
+    def __str__(self):
+        return f'Autor: {self.autor} | Titulo: {self.titulo} | Ano: {self.ano_publicacao}'
 
     @property
     def titulo(self):
@@ -38,7 +39,7 @@ class Livro(Biblioteca):
     
     @property
     def disponivel(self):
-        return f'Disponivel :)' if self._disponivel == True else 'Não Disponivel :('
+        return f'Disponivel :)' if self._disponivel else 'Não Disponivel :('
 
     @property 
     def codigo_livro(self):
@@ -49,7 +50,6 @@ class Livro(Biblioteca):
         ''' Formata a data para o padrão do Brasil '''
         if self._data_emprestimo:
             return self._data_emprestimo.strftime('%d/%m/%Y')
-        
         else:
             return f'O livro código: {self.codigo_livro} não esta emprestado!'
     
@@ -58,7 +58,4 @@ class Livro(Biblioteca):
         ''' Define a data de empréstimo como um objeto datetime '''
         self._data_emprestimo = datetime.strptime(data, '%d/%m/%Y')
 
-
-    def __str__(self):
-        return f'Autor: {self.autor} | Titulo: {self.titulo} | Ano: {self.ano_publicacao}'
 

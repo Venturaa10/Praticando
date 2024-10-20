@@ -20,7 +20,7 @@ print(Biblioteca.adiciona_livro_na_biblioteca(livro2))
 # print(livro2.verifica_data_emprestimo())
 # print(livro2.verifica_data_devolucao())
 # print(livro2.emprestar()) # Funcionando conforme esperado
-# print(livro2.emprestar()) # Funcionando conforme esperado
+print(livro2.emprestar()) # Funcionando conforme esperado
 # print(livro2.info_livro())
 # print(livro2.devolver()) # Funcionando conforme esperado
 

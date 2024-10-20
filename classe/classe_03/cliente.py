@@ -16,6 +16,10 @@ class Cliente(Biblioteca):
         self._nome_cliente = nome_cliente
         self._cpf_cliente = self.valida(cpf_cliente)
 
+
+    def __str__(self):
+        return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
+    
     @property
     def nome_cliente(self):
         return self._nome_cliente.title()
@@ -33,6 +37,4 @@ class Cliente(Biblioteca):
         else: 
             raise ValueError("cpf inválido!")
 
-    def __str__(self):
-        return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
     
