@@ -19,13 +19,13 @@ class Biblioteca:
         -> Retorna os itens da lista utilizando o "join" para juntar os elementos da lista, porém o \n faz com que seja exibido um abaixo do outro.
          '''
         livros_lista = []
-
-        print(cls.livros.items())
         if not cls.livros:
             return 'A biblioteca está vazia :('
-
         for livro, info in cls.livros.items():
-            livros_lista.append(f"Código: {info['codigo']} | Título: {info['titulo']} | Autor: {info['autor']} | Disponibilidade: {info['disponivel']}")
+            if isinstance(info, dict):
+                livros_lista.append(f"Código: {info['codigo']} | Título: {info['titulo']} | Autor: {info['autor']} | Disponibilidade: {info['disponivel']}")
+            else:
+                raise ValueError('Verifique os valores do dicionario.')
 
         return '\n'.join(livros_lista) 
 
@@ -60,9 +60,8 @@ class Biblioteca:
             if self._disponivel:
                 return self.mensagem_livro_disponibilidade()
             else:
-                data_devolucao = self._data_emprestimo + timedelta(days=7)
-                return data_devolucao.strftime('%d/%m/%Y') 
-
+                return self.data_emprestimo
+            
             
     def verifica_livro_cadastro(self):
         '''
@@ -115,12 +114,13 @@ class Biblioteca:
     def info_livro(self):
         ''' Método responsavel por exibir informações do livro '''
         if not self.verifica_livro_cadastro():
+            padrao_texto = f'Código do Livro: {self.codigo_livro} | Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel}'
             if self._disponivel:
-                return f'Código do Livro: {self.codigo_livro} | Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel}'
+                return padrao_texto
             else:
-                return f'Código do Livro: {self.codigo_livro} | Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao} | Disponibilidade: {self.disponivel} | Data de Devolução: {self.data_devolucao}'
+                return padrao_texto + f' | Devolução: {self.data_devolucao}'
 
-        
+
     def info_cliente(self):
         ''' Método responsavel por exibir informações do cliente '''
         return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
@@ -139,7 +139,7 @@ class Biblioteca:
         if not self.verifica_livro_cadastro():
             if self._disponivel:
                 self._disponivel = False
-                self._data_emprestimo = datetime.today()
+                Biblioteca.livros[self._codigo_livro]['disponivel'] = self.data_devolucao
                 return f'Livro "{self.titulo}" emprestado no dia {self.data_emprestimo}, tenha uma otima leitura :)'
             else:
                 return self.mensagem_livro_disponibilidade()
@@ -163,7 +163,6 @@ class Biblioteca:
         -> Verifica se livro esta cadastrado no sistema.\n
         -> Verifica se livro está alugado, através do valor do atributo "_disponivel", se True significa que o livro não está emprestado, e retorna uma mensagem personalizada através do método "_mensagem_livro_disponibilidade".\n
         -> Se não, retorna a data de emprestimo do livro.
-        
         '''
         if not self.verifica_livro_cadastro():
             if self._disponivel:
@@ -184,6 +183,7 @@ class Biblioteca:
                 return self.mensagem_livro_disponibilidade()
             else:    
                 self._disponivel = True
+                Biblioteca.livros[self._codigo_livro]['disponivel'] = self.disponivel
                 return f'Livro "{self.titulo}" devolvido a biblioteca!'       
             
             
@@ -192,10 +192,8 @@ class Biblioteca:
         -> Se "_disponivel" True, retorna mensagem indicando que livro está disponivel para emprestimo.\n
         -> Se não, retorna uma mensagem informando que o livro não está disponivel para emprestimo.
          '''
-        if self._disponivel:
-            return f'O livro "{self.titulo}" está disponivel!'
-        else:
-            return f'O livro "{self.titulo}" não está disponivel!'
+        return f'O livro "{self.titulo}" está disponivel!' if self._disponivel else f'O livro "{self.titulo}" não está disponivel!'
+
 
 
 

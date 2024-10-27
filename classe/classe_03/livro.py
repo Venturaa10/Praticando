@@ -48,14 +48,13 @@ class Livro(Biblioteca):
     @property
     def data_emprestimo(self):
         ''' Formata a data para o padrão do Brasil '''
-        if self._data_emprestimo:
-            return self._data_emprestimo.strftime('%d/%m/%Y')
+        if not self._disponivel:
+            self._data_emprestimo = datetime.today().strftime('%d/%m/%Y')
+            return self._data_emprestimo
         else:
             return f'O livro código: {self.codigo_livro} não esta emprestado!'
     
-    @data_emprestimo.setter
-    def data_emprestimo(self, data):
-        ''' Define a data de empréstimo como um objeto datetime '''
-        self._data_emprestimo = datetime.strptime(data, '%d/%m/%Y')
-
-
+    # @data_emprestimo.setter
+    # def data_emprestimo(self, data):
+    #     ''' Define a data de empréstimo como um objeto datetime '''
+    #     self._data_emprestimo = datetime.strptime(data, '%d/%m/%Y')
