@@ -19,7 +19,7 @@ class Livro(Biblioteca):
         self._ano_publicacao = ano_publicacao
         self._disponivel = False
         self._codigo_livro = False
-        self._data_emprestimo = False
+        self._data_emprestimo = None
 
 
     def __str__(self):
@@ -48,13 +48,16 @@ class Livro(Biblioteca):
     @property
     def data_emprestimo(self):
         ''' Formata a data para o padrão do Brasil '''
-        if not self._disponivel:
-            self._data_emprestimo = datetime.today().strftime('%d/%m/%Y')
-            return self._data_emprestimo
+        if not self._disponivel and self._data_emprestimo:
+            return self._data_emprestimo.strftime('%d/%m/%Y')
+        elif not self._disponivel:
+            self._data_emprestimo = datetime.today()
+            return self._data_emprestimo.strftime('%d/%m/%Y')        
         else:
             return f'O livro código: {self.codigo_livro} não esta emprestado!'
     
-    # @data_emprestimo.setter
-    # def data_emprestimo(self, data):
-    #     ''' Define a data de empréstimo como um objeto datetime '''
-    #     self._data_emprestimo = datetime.strptime(data, '%d/%m/%Y')
+    @data_emprestimo.setter
+    def data_emprestimo(self, data):
+        self._data_emprestimo = datetime.strptime(data, '%d/%m/%Y')
+
+    

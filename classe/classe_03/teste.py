@@ -14,11 +14,10 @@ livro1 = Livro('Sherlock holmes', 'Sherlock', 2000)
 print(Biblioteca.adiciona_livro_na_biblioteca(livro1)) 
 # print(livro1.emprestar()) # Funcionando conforme esperado
 print(livro1.emprestar()) # Funcionando conforme esperado
-# print(livro1.verifica_data_devolucao()  Não esta funcionando
-# print(livro1.info_livro()) # Funcionando conforme esperado
-# print(livro1.devolver()) # Funcionando conforme esperado
+print(livro1.verifica_data_devolucao()) # Não esta funcionando
 print(livro1.info_livro()) # Funcionando conforme esperado
-print()
+print(livro1.devolver()) # Funcionando conforme esperado
+print(livro1.info_livro()) # Funcionando conforme esperado
 
 # livro2 = Livro('Bobos e bocos', 'Alisson rodrigues', 2010)
 

@@ -60,9 +60,16 @@ class Biblioteca:
             if self._disponivel:
                 return self.mensagem_livro_disponibilidade()
             else:
-                return self.data_emprestimo
+                self._data_devolucao = datetime.today() + timedelta(days=7)
+                return self._data_devolucao.strftime('%d/%m/%Y')
+
             
-            
+    @data_devolucao.setter
+    def data_devolucao(self, nova_data):
+        ''' Recebe a data devolução no formato(dd/mm/yyy) e essa string é convertida para um objeto datetime '''
+        self._data_devolucao = datetime.strptime(nova_data, '%d/%m/%Y')
+
+
     def verifica_livro_cadastro(self):
         '''
         Verifica se o atributo "_codigo_livro" é False, isso indica que o livro não foi cadastrado no sistema.
