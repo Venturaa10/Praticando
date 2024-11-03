@@ -42,7 +42,7 @@ class Biblioteca:
             return 'Nenhum cliente encontrado no sistema!'
 
         for cliente, info in cls.clientes.items():
-            clientes_lista.append(f"CPF: {info['cpf']} | Nome Completo: {info['nome']}")
+            clientes_lista.append(f"CPF: {info['cpf']} | Nome Completo: {info['nome']} | Email: {info['email']}")
 
         return '\n'.join(clientes_lista) # Une os itens da lista, porém o \n faz com que seja exibido um abaixo do outro.
 
@@ -113,7 +113,8 @@ class Biblioteca:
          '''
         Biblioteca.clientes[self.cpf_cliente] = {
             'nome': self.nome_cliente,
-            'cpf': self.cpf_cliente
+            'cpf': self.cpf_cliente,
+            'email': self.email_cliente
         }
         return f'Nome do Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente} -> Cadastrado no sistema'
 
@@ -130,7 +131,7 @@ class Biblioteca:
 
     def info_cliente(self):
         ''' Método responsavel por exibir informações do cliente '''
-        return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente}'
+        return f'Cliente: {self.nome_cliente} | CPF: {self.cpf_cliente} | Email: {self.email_cliente}'
 
 
     def emprestar(self):
