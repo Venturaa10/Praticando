@@ -8,8 +8,8 @@ class Cliente(Biblioteca):
         cpf_cliente = limpa_cpf 
         email_regex = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 
-        if not len(cpf_cliente) == 11:
-            raise ValueError('CPF não está conforme esperado, verificar!')
+        # if not len(cpf_cliente) == 11:
+        #     raise ValueError('CPF não está conforme esperado, verificar!')
         
         if not isinstance(nome_cliente, str):
             raise ValueError('Nome do cliente invalido!')

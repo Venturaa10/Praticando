@@ -3,9 +3,44 @@ import os
 from biblioteca import Biblioteca
 from livro import Livro
 from cliente import Cliente
+from validate_docbr import CPF
+import re
+
 
 def limpa_terminal():
     os.system('cls')
+
+def mensagem_erro(msg_erro):
+    print(msg_erro)
+
+def valida_nome_cliente(nome_cliente):
+    if not all(c.isalpha() or c.isspace() for c in nome_cliente) or len(nome_cliente) < 5:
+        mensagem_erro('O nome só pode conter letras.')
+        novo_nome = input('Nome do cliente "Apenas LETRAS e mais de 4 Caracteres.": ').strip()
+        return valida_nome_cliente(novo_nome)
+
+    print('\nNome do Cliente Valido!')
+    return nome_cliente
+
+def valida_cpf_cliente(cpf_cliente):
+    validador = CPF()
+    if not validador.validate(cpf_cliente):
+        print(f'CPF: {cpf_cliente} é invalido!')
+        novo_cpf = input('Informe um CPF valido: ')
+        return valida_cpf_cliente(novo_cpf)
+
+    print('\nCPF Valido!')
+    return cpf_cliente
+
+def valida_email_cliente(email_cliente):
+    email_regex = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if re.match(email_regex, email_cliente.strip(' ')) == None:
+        print(f'O email {email_cliente} fornecido é invalido!')
+        novo_email = input('Informe um endereço de email valido: ')
+        return valida_email_cliente(novo_email)
+
+    print('\nEmail Valido!')
+    return email_cliente
 
 def menu_principal():
     print('''
@@ -39,16 +74,38 @@ def menu_principal():
         return menu_principal()
 
 def cadastrar_livro():
-    print('CADASTRO DE CLIENTE')
+    print('CADASTRO DE LIVRO')
+
 
 def cadastrar_cliente():
     print('Cadastro de Cliente')
+    nome_cliente = input('Nome do Cliente: ').strip()
+    valida_nome_cliente(nome_cliente)
+    cpf_cliente = input('CPF do Cliente: ').strip()
+    valida_cpf_cliente(cpf_cliente)
+    email_cliente = input('Email do Cliente: ').strip()
+    valida_email_cliente(email_cliente)
+
+    dados_cliente = [{
+        'nome': nome_cliente,
+        'cpf': cpf_cliente, 
+        'email': email_cliente
+    }]
+    
+    for valor in dados_cliente:
+        cliente = Cliente(valor['nome'], valor['cpf'], valor['email'])
+
+    print(cliente)
+    Cliente.adiciona_cliente_ao_sistema(cliente)
+    return menu_principal()
+    # print(Biblioteca.exibe_clientes())
 
 def exibir_biblioteca():
     print('Exibe Biblioteca')
 
 def exibir_clientes():
     print('Exibe Clientes')
+    print(Biblioteca.exibe_clientes())
 
 def sair():
     print('Obrigado pela visita :)')
