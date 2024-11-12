@@ -203,7 +203,15 @@ class Biblioteca:
         return f'O livro "{self.titulo}" está disponivel!' if self._disponivel else f'O livro "{self.titulo}" não está disponivel!'
 
 
+    def verifica_dados_duplicados_clientes(self):
+        for cliente_cpf in self.clientes:
+            if cliente_cpf in self.clientes:
+                raise ValueError('Esse CPF já está cadastrado no sistema!')
+            
+            return 'CPF passou no teste de clonagem'
 
+    def verifica_dados_duplicados_livros(self):
+        pass
 
 
     

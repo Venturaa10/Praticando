@@ -85,27 +85,27 @@ def cadastrar_cliente():
     valida_cpf_cliente(cpf_cliente)
     email_cliente = input('Email do Cliente: ').strip()
     valida_email_cliente(email_cliente)
-
-    dados_cliente = [{
-        'nome': nome_cliente,
-        'cpf': cpf_cliente, 
-        'email': email_cliente
-    }]
     
-    for valor in dados_cliente:
-        cliente = Cliente(valor['nome'], valor['cpf'], valor['email'])
-
-    print(cliente)
-    Cliente.adiciona_cliente_ao_sistema(cliente)
+    cliente = Cliente(nome_cliente, cpf_cliente, email_cliente)
+    
+    print(Biblioteca.verifica_dados_duplicados_clientes(cliente))
+    Biblioteca.adiciona_cliente_ao_sistema(cliente)
+    print(Biblioteca.exibe_clientes())
+    
     return menu_principal()
-    # print(Biblioteca.exibe_clientes())
 
 def exibir_biblioteca():
-    print('Exibe Biblioteca')
+    print('LIVROS NO SISTEMA DA BIBLIOTECA!')
+    print(Biblioteca.exibe_biblioteca())
+    input('Digite alguma coisa para voltar ao menu: ')
+    return menu_principal()    
 
 def exibir_clientes():
-    print('Exibe Clientes')
+    limpa_terminal()
+    print('\nCLIENTES CADASTRADOS NO SISTEMA!')
     print(Biblioteca.exibe_clientes())
+    input('Digite alguma coisa para voltar ao menu: ')
+    return menu_principal()
 
 def sair():
     print('Obrigado pela visita :)')
